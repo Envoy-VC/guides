@@ -1,0 +1,87 @@
+In this section, we'll be discussing the various ways you can set up a Solidity development environment on your local machine. While there are several methods to choose from, we'll be focusing specifically on using the Remix IDE.
+
+Why, you ask? Well, Remix is an excellent choice for both beginners and experienced developers alike. It's a web-based tool that's easy to use and has a wealth of features that make coding and testing smart contracts a breeze. So, let's dive in and explore how you can get up and running with Remix in no time! 💻🚀
+
+## 🛠️ Prerequisites
+
+Before we get started, make sure you have the following installed on your computer:
+
+1. A modern web browser (e.g. Chrome, Firefox, Safari)
+2. An internet connection
+
+That's it! Remix is a web-based IDE, so you don't need to install any software on your computer.
+
+## 💻 Setting Up Remix IDE
+
+To get started with [Remix IDE](https://remix.ethereum.org/), simply go to https://remix.ethereum.org/ in your web browser. You'll be presented with a welcome screen that looks like this:
+
+![Welcome Screen](assets/remix-01.png)
+
+The welcome screen shows some examples of contracts you can try out, as well as some other useful information. To start a new project, click the `Create New File` button in the top left of the screen or the blue button on the center. This will open a new tab where you can start writing your Solidity code.
+
+![Create New File](assets/remix-02.png)
+
+Once you've created a new file name it `Contract.sol`, make sure the filename ends with `.sol` this is the extension for Solidity Source Files.You can start writing your Solidity code. Remix has a lot of great features that make writing Solidity code a breeze. Some of the features include:
+
+- Syntax highlighting
+- Auto-completion
+- Code formatting
+- Code analysis
+- Debugging
+- And much more!
+
+## 🧪 Compiling Your Code
+
+To Deploy out Solidity Smart Contract we have to Compile it first.Remix has a built-in compiler to compile or smart contracts. To compile your code, simply go to the `Solidity Compiler` tab and under the compiler dropdown select version `0.8.14`. for this course we will be using this compiler version.
+
+Also make sure to check the `Auto Compile` checkbox so that yo don''t have to recompile manually again after making changes.
+
+![Compiler Options](assets/remix-03.png)
+
+Remix also has a built-in console that allows you to interact with your contracts directly. You can use the console to call functions on your contracts, inspect variables, and much more.
+
+## 🚀 Deploying Your Contract
+
+Once you've compiled your code and you're ready to deploy it, Remix makes it easy to do so. Simply go to the `Deploy` Tab, there you will find a bunch of options let's see what all of them do.
+
+![Deploy Options](assets/remix-04.png)
+
+1. **Environment** - It contains many environments in which you can deploy your contract. `Remix VM`, a virtual machine used for local smart contract testing, is one of the choices. You can also use `Injected Provider` to deploy your contract to various Ethereum-based chains using an Injected Wallet like as _Metamask_. You also have a `Hardhat` and a `Ganache Provider`, which allows you to deploy your contract to a Ganache Instance that is running locally on your PC.
+2. **Accounts** - Remix Gives you 10 Testing Accounts with `100 ETH` each to test you smart contracts and make transactions.
+3. **Gas Limit** - You can set the gas limit for a transaction here, most of the time this won't be needed.
+4. **Value** - You can set the value for a transaction or think of this as the amount of tokens you want to send. It can take several units such as `Wei`,`Gwei`,`Finney`,`Ether`.
+
+   1 Ether = `1,000,000,000,000,000,000` Wei (or) **10<sup>18</sup> Wei**<br />
+   1 Ether = `1,000,000,000` Gwei (or) **10<sup>9</sup> Gwei**<br />
+   1 Ether = `1000` Finney (or) **10<sup>3</sup> Finney**
+
+5. **Contract** - Here you can select which contract to deploy.
+6. **At Address** - If you contract is already deployed to the blockchain and you want to interact with it then you can pass in the contract address and execute the functions in the contract.
+
+import { Callout } from 'nextra-theme-docs'
+ 
+<Callout>
+  Remix also supports deploying contracts to other networks, such as the _Optimism_ and the _Arbitrum L2s_.
+
+</Callout>
+
+## 👀 Real World Examples
+
+Solidity is being used to create some amazing real-world applications. Some examples include:
+
+- `Uniswap` - a decentralized exchange that has processed over $100 billion in trading volume
+- `Aave` - a decentralized lending platform that has over $20 billion in assets under management
+- `CryptoKitties` - a game that allows you to collect, breed, and trade digital cats
+  By learning Solidity, you'll be able to create your own amazing applications and contribute to the growing ecosystem of decentralized finance.
+
+## 🎁 Bonus Content
+
+Before we move on to the next topic, we have a bonus trick for you. Did you know that you can change the theme of your Remix IDE? That's right! You can customize your workspace to match your style and preferences. Here's how you can do it:
+
+- Step 1: Locate the settings icon in the bottom left corner of the Remix IDE and click on it.
+- Step 2: Scroll down to the `Themes` section.
+- Step 3: Now, you can select any theme you like. My personal favorite is the black theme – it feels more like VS Code! But, feel free to choose whichever theme you prefer.
+
+![Changing theme](assets/remix-05.png)
+
+There you have it – a simple trick to customize your Remix IDE and make it more enjoyable to work with. Happy coding! 🎨👨‍💻
