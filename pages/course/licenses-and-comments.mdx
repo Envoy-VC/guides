@@ -1,0 +1,105 @@
+Welcome to **Day 1**! Today, we'll be diving into some of the finer details of the Solidity language, including `licenses`, `pragma` statements, comments, and NatSpec Formats. These elements are essential for writing secure and well-documented code. so let's start.
+
+## 🪪 Licenses
+
+A _license_ is a legal agreement between the creator of a software and its users. It defines the terms and conditions under which the software can be used, modified, and distributed. By default, Solidity contracts are not licensed, which means anyone can use and modify them without permission. To license your Solidity contracts, you can include a license header at the beginning of your code.
+
+```solidity filename="Contract.sol" copy
+// SPDX-License-Identifier: MIT
+```
+
+The `SPDX-License-Identifier` is a standard identifier used to specify the license of a contract. The `MIT` license is one of the most permissive open-source licenses, allowing anyone to use, modify, and distribute the code without restriction. You can view all the licenses on the [SPDX Official Website](https://spdx.org/licenses/)
+
+import { Callout } from "nextra-theme-docs";
+
+<Callout type="warning" emoji="⚠️">
+  If the license identifier isn’t included in the contract file the compiler
+  will now show a warning.
+</Callout>
+
+<Callout type="error" emoji="🚫">
+  If there are multiple license identifiers in the contract file the compiler
+  will now show an error.
+</Callout>
+
+---
+
+## 📎 Pragmas
+
+A pragma statement is a compiler directive that tells the compiler how to handle certain aspects of your Solidity code. Think of it as a set of instructions for the Solidity compiler to follow when compiling your code.
+
+### 👨‍💻 Types of Pragma
+
+There are several types of pragma statements in Solidity, and we will be discussing the most common ones:
+
+- **Version Pragma** - This pragma statement is used to specify the version of Solidity that your code is written in. It ensures that your code is compiled with the correct version of the Solidity compiler. For example:
+
+  ```solidity copy {1,4,7}
+  pragma solidity ^0.8.14;
+  // Anything above 0.8.14
+
+  pragma solidity >=0.8.7 <0.8.19;
+  // Anything between 0.8.7 to 0.8.19 where 0.8.19 is not included
+
+  pragma solidity 0.8.14;
+  // Only Version 0.8.14
+  ```
+
+- **ABI Coder Pragma** - The ABI coder (v2) can now handle really complicated arrays and structures with many dimensions. This means it can support more types of data, but it also has more safety checks to make sure everything is working correctly. These extra checks might make it more expensive to run the code, but they also make it more secure. In easy words there are some data types which are not supported by default but you can use them by including this pragma. For example:
+
+  ```solidity copy
+  pragma abicoder v2;
+  ```
+
+- **Experimental Pragma** - This pragma statement is used to enable experimental features in Solidity. These features may not be fully tested or stable, so use them with caution. For example:
+
+  ```solidity copy
+  pragma experimental SMTChecker;
+  ```
+
+  this includes a feature where you get additional safety warnings which are obtained by querying an SMT solver. These warnings can be Division by zero,Insufficient funds for a transfer,etc. To read more about these experimental features you can go the [Solidity Docs](https://docs.soliditylang.org/en/v0.8.19/layout-of-source-files.html#experimental-pragma)
+
+😶‍🌫️ Phew, that was a lot of pragmas to take in! But don't you worry, my friend. For this course, we'll only be needing the version pragma. But it's always good to know that there are a whole bunch of other pragmas out there, just waiting to be used.
+
+## 📝 Comments
+
+Comments are used to describe your code to other developers. They're not executed by the compiler, so you can write anything you want in them. However, comments can help make your code more readable and easier to understand. There are two types of comments in Solidity: single-line and multi-line comments.
+
+### 👨‍💻 Types of comments
+
+- **Single-line comments** - They start with `//` and continue until the end of the line. They're useful for adding a brief description of what a piece of code does. For example,
+
+  ```solidity copy
+  // This is a single line comment
+  ```
+
+- **Multi-line comments** - They start with `/*` and end with `*/`. They can span multiple lines and are useful for adding longer descriptions or explanations. For example,
+
+  ```solidity copy
+  /*
+  this is a multi-line comment
+  it can go to multiple lines
+  its used to provide brief explanations
+  */
+  ```
+
+- **NatSpec Comments** - This is a special form of comments to provide rich documentation for your code. This special form is named the Ethereum Natural Language Specification Format (NatSpec). They start with a triple forward slash (`///`) and are followed by a description of the function or contract. For example,
+
+  ```solidity copy
+  /// @title A Simple Contract
+  /// @author Vedant Chainan
+  /// @notice You can use this contract for only the most basic tasks
+  /// @dev All function calls are currently implemented without side effects
+  /// @custom:experimental This is an experimental contract.
+  ```
+
+  To read more about NatSpecc Comment you can visit [Solidity Docs](https://docs.soliditylang.org/en/latest/natspec-format.html)
+
+## 📚 Further Readings
+
+Congratulations 🥳, you've made it through this article and now have a better understanding of Solidity and some of its features! However, there is always more to learn and explore. Here are some resources for you to check out if you're interested in diving deeper:
+
+- [Solidity Documentation](https://docs.soliditylang.org/en/v0.8.19/index.html): This is the official documentation for Solidity and provides a comprehensive guide to the language. It covers everything from basic syntax to advanced features, and includes examples and best practices.
+- [SMT Checkers](https://fv.ethereum.org/2021/12/01/smtchecker-dapptools/) and [Formal Verification](https://docs.soliditylang.org/en/v0.8.19/smtchecker.html#formal-verification) -Solidity has tools called SMT (`Satisfiability Modulo Theories`) checkers that can verify the correctness of smart contracts by using mathematical models to check if they satisfy certain properties.
+
+These resources will help you expand your knowledge and skills in Solidity development. Remember, the more you learn, the more you can contribute to the community and build amazing decentralized applications! 🚀
