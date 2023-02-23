@@ -1,4 +1,9 @@
 {
   "index": "Introduction",
-  "start": "Getting Started"
+  "start": "Getting Started",
+  "-- Course": {
+    "type": "separator",
+    "title": "Course"
+  },
+  "course": "30 Days of Solidity"
 }
