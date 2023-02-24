@@ -5,4 +5,10 @@ const withNextra = require("nextra")({
   themeConfig: "./theme.config.jsx",
 });
 
-module.exports = withNextra();
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+};
+
+module.exports = withNextra(nextConfig);
