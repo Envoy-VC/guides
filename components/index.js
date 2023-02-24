@@ -1,3 +1,4 @@
-import Days from "./Day";
+import NavigationCards from "./Navigation";
+import Logo from "./Logo";
 
-export { Days };
+export { NavigationCards, Logo };

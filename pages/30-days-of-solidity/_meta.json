@@ -1,0 +1,14 @@
+{
+  "index": "Introduction",
+  "-- SEP-01": {
+    "type": "separator",
+    "title": "Getting Started"
+  },
+  "what-is-solidity": "What is Solidity?",
+  "setting-up": "Setting Up Your Environment",
+  "-- SEP-3": {
+    "type": "separator",
+    "title": "30 Days of Solidity"
+  },
+  "start": "Course"
+}
