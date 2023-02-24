@@ -1,4 +1,20 @@
-Welcome to **Day 1**! Today, we'll be diving into some of the finer details of the Solidity language, including `licenses`, `pragma` statements, comments, and NatSpec Formats. These elements are essential for writing secure and well-documented code. so let's start.
+import "styles/index.css";
+
+<div className="text-[36px]">👋 Hello</div>
+
+Let's start our journey with Solidity 🚀! In this article, we'll be diving into the layout of a Solidity source file. 💻 Solidity has a specific structure that you need to follow in order for your code to compile correctly. We'll be breaking down each part of a Solidity source file and discussing how to properly structure your code. So, let's get started with another exciting adventure in Solidity! 🤩
+
+Here is a basic layout of a Solidity source file-
+
+```
+- SPDX License Identifier
+- Pragmas
+- Importing other Source Files
+- Comments
+- Contract
+```
+
+Let's get started with licenses
 
 ## 🪪 Licenses
 
@@ -61,6 +77,46 @@ There are several types of pragma statements in Solidity, and we will be discuss
 
 😶‍🌫️ Phew, that was a lot of pragmas to take in! But don't you worry, my friend. For this course, we'll only be needing the version pragma. But it's always good to know that there are a whole bunch of other pragmas out there, just waiting to be used.
 
+## 📁 Importing Solidity Files
+
+Solidity allows you to use import statements these statements help you modularize your code and make it easier to manage. You can import symbols from other Solidity files by using the import statement, followed by the file name. Solidity also provides us with import statements similar to those in JavaScript (from ES6 on), but with some key differences. One of the biggest differences is that Solidity does not support the concept of a default export. 🤔
+
+At a global level, you can use import statements with the following form:
+
+```solidity
+import "filename";
+```
+
+The `filename` part is called an import path. This statement to import all global symbols from the specified file into the current global scope. But be careful, this method can cause problems with naming conflicts and pollute the namespace.
+
+A better way to import symbols is to use the explicit syntax
+
+```solidity
+import {symbol1, symbol2} from "filename";
+```
+
+This syntax allows you to choose exactly which symbols you want to import and avoids any naming conflicts.
+
+You can also use the syntax
+
+```solidity
+import * as symbolName from "filename";
+// or
+import "filename" as symbolName;
+```
+
+to create a new global symbol that contains all the symbols from the imported file. And if you run into naming collisions, you can use the as keyword to rename symbols while importing them.
+
+In case of naming collisions, you can rename symbols while importing using the following syntax:
+
+```solidity
+import {symbol1 as alias, symbol2} from "filename";
+```
+
+This creates new global symbols, "`alias`" and "`symbol2`", that reference "`symbol1`" and "`symbol2`" from inside "`filename`", respectively. 💪
+
+So, that's all for now on importing other Solidity files! 🚀
+
 ## 📝 Comments
 
 Comments are used to describe your code to other developers. They're not executed by the compiler, so you can write anything you want in them. However, comments can help make your code more readable and easier to understand. There are two types of comments in Solidity: single-line and multi-line comments.
@@ -87,19 +143,23 @@ Comments are used to describe your code to other developers. They're not execute
 
   ```solidity copy
   /// @title A Simple Contract
-  /// @author Vedant Chainan
+  /// @author Vedant Chainani
   /// @notice You can use this contract for only the most basic tasks
   /// @dev All function calls are currently implemented without side effects
   /// @custom:experimental This is an experimental contract.
   ```
 
-  To read more about NatSpecc Comment you can visit [Solidity Docs](https://docs.soliditylang.org/en/latest/natspec-format.html)
+  To read more about NatSpec Comment you can visit [Solidity Docs](https://docs.soliditylang.org/en/latest/natspec-format.html)
 
 ## 📚 Further Readings
 
 Congratulations 🥳, you've made it through this article and now have a better understanding of Solidity and some of its features! However, there is always more to learn and explore. Here are some resources for you to check out if you're interested in diving deeper:
 
-- [Solidity Documentation](https://docs.soliditylang.org/en/v0.8.19/index.html): This is the official documentation for Solidity and provides a comprehensive guide to the language. It covers everything from basic syntax to advanced features, and includes examples and best practices.
-- [SMT Checkers](https://fv.ethereum.org/2021/12/01/smtchecker-dapptools/) and [Formal Verification](https://docs.soliditylang.org/en/v0.8.19/smtchecker.html#formal-verification) -Solidity has tools called SMT (`Satisfiability Modulo Theories`) checkers that can verify the correctness of smart contracts by using mathematical models to check if they satisfy certain properties.
+- [Solidity Documentation](https://docs.soliditylang.org/en/v0.8.19/index.html) - This is the official documentation for Solidity and provides a comprehensive guide to the language. It covers everything from basic syntax to advanced features, and includes examples and best practices.
+- [SMT Checkers](https://fv.ethereum.org/2021/12/01/smtchecker-dapptools/) and [Formal Verification](https://docs.soliditylang.org/en/v0.8.19/smtchecker.html#formal-verification) - Solidity has tools called SMT (`Satisfiability Modulo Theories`) checkers that can verify the correctness of smart contracts by using mathematical models to check if they satisfy certain properties.
 
 These resources will help you expand your knowledge and skills in Solidity development. Remember, the more you learn, the more you can contribute to the community and build amazing decentralized applications! 🚀
+
+```
+
+```
