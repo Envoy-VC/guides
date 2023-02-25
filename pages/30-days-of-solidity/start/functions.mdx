@@ -1,0 +1,190 @@
+Welcome to **Day 4** of 30 Days of Solidity. Today, we'll go over everything you need to know about functions in Solidity, including their syntax, parameters, return variables, and state mutability. We'll also cover some more advanced topics, such as function overloading and real-world use cases.
+
+## 🤔 What are Functions?
+
+In Solidity, functions are essentially blocks of code that can be called by other parts of the program. They can take input parameters, process data, and return output values. You can think of them as similar to functions in other programming languages, such as JavaScript or Python.
+
+Syntax
+The syntax for defining a function in Solidity is as follows:
+
+```solidity copy
+function function_name(parameter1_type parameter1, parameter2_type parameter2)
+    visibility
+    state_mutability
+    returns(return_type) {
+    // function code
+}
+```
+
+Let's break down each part of this syntax:
+
+- `function_name` is the name of the function.
+- `parameter1_type` and `parameter2_type` are the data types of the input parameters.
+- `parameter1` and `parameter2` are the names of the input parameters.
+- `visibility` specifies who can call the function (e.g., public, private, internal, or external).
+- `state_mutability` specifies whether the function can modify the state of the contract (e.g., pure, view, or payable).
+- `returns` specifies the data type of the return value (if any).
+
+## 📍 Function Parameters
+
+Functions in Solidity can have one or more input parameters, which are passed in when the function is called. The data types of these parameters must be explicitly specified in the function definition.
+
+For example, here's a function that takes two integer parameters:
+
+```solidity copy
+function addNumbers(uint256 num1, uint256 num2) public pure returns(uint256) {
+    return num1 + num2;
+}
+```
+
+## 📍 Return Variables
+
+Functions in Solidity can also return one or more values. The data type of the return value(s) must be explicitly specified in the function definition, and the returns keyword is used to specify the return type.
+
+For example, here's a function that returns the sum of two numbers:
+
+```solidity copy
+function addNumbers(uint256 num1, uint256 num2) public pure returns(uint256) {
+    return num1 + num2;
+}
+```
+
+## 📍 State Mutability
+
+State Mutability is used to specify whether a function can modify the state of the contract. There are two options:
+
+- **pure**: the function does not read or modify the state of the contract.
+- **view**: the function reads data from the contract but does not modify it.
+
+For example, here's a function that is pure:
+
+```solidity copy
+function addNumbers(uint256 num1, uint256 num2) public pure returns(uint256) {
+    return num1 + num2;
+}
+```
+
+## 📍 Payable Functions
+
+Ff a function is marked as `payable`, it can receive Ether. This is useful for functions that involve payments or other financial transactions.
+
+Here's an example of a payable function that allows users to send Ether to the contract:
+
+```solidity copy
+function deposit() public payable {
+    // Code to handle the deposit
+}
+```
+
+## 📍 Function Overloading
+
+Function overloading is a feature in Solidity that allows you to define multiple functions with the same name but different function parameters. When you call a function with a specific set of parameters, Solidity will determine which function to execute based on the types and number of the parameters.
+
+👨‍💻 Here's an example of function overloading in Solidity:
+
+```solidity copy
+pragma solidity ^0.8.0;
+
+contract FunctionOverloading {
+
+    function add(uint256 x, uint256 y) public pure returns (uint256) {
+        return x + y;
+    }
+
+    function add(uint256 x, uint256 y, uint256 z) public pure returns (uint256) {
+        return x + y + z;
+    }
+
+}
+```
+
+In this example, we've defined two functions with the same name "add", but with different sets of parameters.
+
+Function overloading is a powerful feature that allows you to write more concise and expressive code. It can also help reduce the number of functions you need to write, since you can reuse the same function name with different parameter types.
+
+💡 Real-world use cases for function overloading include writing utility functions that perform different actions based on the types of inputs they receive, and writing contract functions that can handle different types of data input.
+
+Keep in mind that function overloading can only be used with external or public functions, and not with internal or private functions. Additionally, if you have two functions with the same name and the same number and types of parameters, Solidity will consider them to be the same function, and you'll get a compiler error.
+
+## 🗺️ Real-World Use Cases
+
+Functions are a fundamental part of smart contract development, and they can be used for a variety of purposes. Here are a few examples:
+
+- **Payment processing**: Functions can be used to handle payments and financial transactions, such as sending or receiving Ether.
+- **Token creation**: Functions can be used to create and manage custom tokens, such as ERC-20 tokens.
+- **Data processing**: Functions can be used to process data and perform calculations based on that data.
+- **Access control**: Functions can be used to control access to certain parts of a smart contract, such as restricting certain functions to only authorized users.
+
+## 🎯 Challenge
+
+👨‍💻 Here are the challenges for today
+
+**❓ Write a Solidity function that keeps track of the total number of times it has been called.**
+
+<details>
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint public totalCalls = 0;
+
+    function call() public {
+        totalCalls++;
+    }
+}
+```
+
+</details>
+
+---
+
+**❓ Write a Solidity function that takes in a integer and returns double its value without using any Arithmetic Operators**
+
+> 💡 **Hint**: Think about using Bitwise Operators
+
+<details>
+
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+
+    function double(uint256 num) public pure returns(uint256) {
+        return num << 1;
+    }
+}
+```
+
+</details>
+
+---
+
+🤔 Alright, let's take your Solidity skills to the next level with a challenge that uses global variables related to the Ethereum blockchain!
+
+**❓ Write a Solidity function that returns the hash of the current block**
+
+> 💡 **Hint**: You can use `blockhash` function to get the hash of a block which takes in one parameter, the block number.
+
+<details>
+
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function getBlockHash() public view returns (bytes32) {
+        bytes32 blockHash = blockhash(block.number);
+        return blockHash;
+    }
+}
+```
+
+</details>
