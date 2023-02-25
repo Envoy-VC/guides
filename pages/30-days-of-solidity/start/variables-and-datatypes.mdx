@@ -86,6 +86,12 @@ uint myNumber = 10;
 
 Fixed point numbers are used to represent decimal numbers with a fixed number of decimal places. Solidity has two fixed point types: `ufixed` and `fixed`. The ufixed data type represents an unsigned fixed point number, while the fixed data type represents a signed fixed point number.
 
+<Callout type="warning" emoji="⚠️">
+  **Note** - Fixed point types are not fully supported yet. They can be
+  declared, but cannot be assigned to or from. It's also still undecided which
+  of the upcoming compiler versions will support them.
+</Callout>
+
 Keywords `ufixedMxN` and `fixedMxN`, where `M` represents the number of bits taken by the type and `N` represents how many decimal points are available.
 
 - M must be divisible by 8 and goes from 8 to 256 bits.
@@ -109,7 +115,8 @@ string myString = "Hello, world!";
 
 we can also use bytes with string for example, with `bytes32 samevar = "stringliteral";{solidity}` the string literal is interpreted in its raw byte form when assigned to a bytes32 type.
 
-👨‍💼 Address Types:
+### 👨‍💼 Address Types:
+
 The address data type is used to store Ethereum addresses. The address type comes in two largely identical flavors:
 
 - **address**: Holds a 20 byte value (size of an Ethereum address).
@@ -162,3 +169,32 @@ import { Callout } from "nextra-theme-docs";
 </Callout>
 
 👀 And that's it! You now know about the different data types in Solidity and how to declare variables of each type. When declaring a variable, make sure to choose the data type that best fits the type of data you want to store.
+
+## 🎯 Challenge
+
+**❓ Build a simple smart contract called 'Contract.sol' and populate variables with the datatype we studied today.**
+
+Ready for the solution, just expand the section below
+
+<details>
+
+<summary>⬇️ Answer</summary>
+
+```solidity copy filename="Contract.sol"
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint myUint = 10;
+    fixed32x4 myFixed;
+    string myString = "Hello World!";
+    address myAddress = 0xBF4979305B43B0eB5Bb6a5C67ffB89408803d3e1;
+    bool myBoolean = true;
+    string public myUnicode = unicode"Hello 😃";
+    bytes32 public myHex = hex"001122FF";
+}
+```
+
+</details>
+
+That's all for today! Keep learning and practicing Solidity, and we'll see you tomorrow for more blockchain awesomeness! ✨

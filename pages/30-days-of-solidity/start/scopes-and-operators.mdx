@@ -1,0 +1,179 @@
+Welcome 👋 to **Day 3** of our 30 Days of Solidity! Today, we will be discussing variables, their types, scopes, and operators in Solidity. Variables can be categorized into different types based on their scope, such as state, local, and global. Additionally, variables can have different levels of access depending on their scope, which we will discuss today.
+
+## 🔭 Variable Scopes
+
+In Solidity, variables can have different levels of access depending on their scope. Here are the three types of scope in Solidity:
+
+- **Internal**: Internal variables are only accessible within the contract and any contracts that inherit from it. Here's an example of an internal variable declaration:
+
+  ```solidity copy
+  uint256 internal myInternal= 15;
+  ```
+
+- **Public**: Public variables are accessible both internally and externally. They can be read and modified by any contract or external account. Here's an example of a public variable declaration:
+
+  ```solidity copy
+  uint256 public myPublic = 10;
+  ```
+
+  The sole difference between public and internal state variables is that the compiler automatically generates getter functions for each, allowing other contracts to read their values. When you define a public variable and deploy it on a Remix Ethereum VM, for example, you will be able to see blue boxes under the deployed contract. You may then read the variables from there.
+
+  ![Getter Functions](assets/30-days-of-solidity/getter-function.png)
+
+- **Private**: Private variables are only accessible within the contract that defines them. They cannot be accessed by contracts that inherit from them. Here's an example of a private variable declaration:
+
+  ```solidity copy
+  uint256 private myPrivate = 20;
+  ```
+
+## 🫙 Variable Types
+
+In Solidity, variables can be categorized based on their scope, which determines where they can be accessed in a program.
+
+- **State Variables**: State variables are declared at the contract level, and their values persist between function calls. Here's an example of a state variable declaration:
+
+  ```
+  uint256  myStateVar = 15;
+  ```
+
+- **Local Variables**: Local variables are declared within a function and have a limited scope. They can only be accessed within the function where they are declared. Here's an example of a local variable declaration:
+
+  ```
+  function myFunction() public {
+      uint256 myLocalVar = 10;
+  }
+  ```
+
+- **Global Variables**: Global variables are predefined variables that Solidity provides for you to use in your code. They are accessible from anywhere in the program. Here are some of the global variables:
+
+| Name                             | Returns                                                                             |
+| -------------------------------- | ----------------------------------------------------------------------------------- |
+| msg.sender                       | sender of the message (current call)                                                |
+| tx.origin                        | sender of the transaction (full call chain)                                         |
+| block.timestamp                  | current block timestamp in seconds since Unix epoch                                 |
+| blockhash                        | Hash of the given block - only works for 256 most recent, excluding current, blocks |
+| block.coinbase (address payable) | Current block miner's address                                                       |
+| block.difficulty (uint)          | Current block difficulty                                                            |
+| block.gaslimit (uint)            | Current block gaslimit                                                              |
+
+    Here are some examples,
+
+    ```solidity copy
+    // SPDX-License-Identifier: MIT
+
+    pragma solidity ^0.8.14;
+
+    contract Contract {
+        uint public timestamp = block.timestamp; // 1677325713
+        uint public difficulty = block.difficulty; // 71762765929000
+        bytes32 public hash = blockhash(16705023);
+        // 0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3
+    }
+
+    ```
+    To know more about Global Variable you can visit [Solidity Docs](https://docs.soliditylang.org/en/v0.8.17/units-and-global-variables.html#special-variables-and-functions)
+
+## 🏗️ Operators
+
+Operators are symbols that perform operations on one or more operands. Solidity supports various types of operators, such as arithmetic, comparison, logical, bitwise, and ternary.
+
+### 📍 Arithmetic Operators
+
+Arithmetic operators perform mathematical operations on operands. Let us consider two variables `A = 10` and `B = 20`, then
+
+| Operator             | Description                                  | Example               |
+| -------------------- | -------------------------------------------- | --------------------- |
+| `+` (Addition)       | Adds two operands                            | `A + B` will give 30  |
+| `-` (Subtraction)    | Subtracts the second operand from the first  | `A - B` will give -10 |
+| `*` (Multiplication) | Multiply both operands                       | `A * B` will give 200 |
+| `/` (Division)       | Divide the numerator by the denominator      | `B / A` will give 2   |
+| `%` (Modulus)        | Outputs the remainder of an integer division | `B % A` will give 0   |
+| `++` (Increment)     | Increases an integer value by one(1)         | `A++` will give 11    |
+| `--` (Decrement)     | Decreases an integer value by one(1)         | `A--` will give 9     |
+
+### 📍 Comparison Operators
+
+Comparison operators compare the values of two operands and return a Boolean value (true or false). Here are all the comparison operators
+
+| Operator                        | Description                                                                                                                                  | Example                 |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| `==` (Equal)                    | Checks if the value of two operands are equal or not, if yes, then the condition becomes true.                                               | (`A == B`) is not true. |
+| `!=` (Not Equal)                | Checks if the value of two operands are equal or not, if the values are not equal, then the condition becomes true.                          | (`A != B`) is true.     |
+| `>` (Greater than)              | Checks if the value of the left operand is greater than the value of the right operand, if yes, then the condition becomes true.             | (`A > B`) is not true.  |
+| `<` (Less than)                 | Checks if the value of the left operand is less than the value of the right operand, if yes, then the condition becomes true.                | (`A < B`) is true.      |
+| `>=` (Greater than or Equal to) | Checks if the value of the left operand is greater than or equal to the value of the right operand, if yes, then the condition becomes true. | (`A >= B`) is not true. |
+| `<=` (Less than or Equal to)    | Checks if the value of the left operand is less than or equal to the value of the right operand, if yes, then the condition becomes true.    | (`A <= B`) is true.     |
+
+### 📍 Logical (or Relational) Operators
+
+Logical operators perform logical operations on Boolean values. Assume variable A holds 10 and variable B holds 20, then −
+
+| Operator            | Description                                                                                                          | Example                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `&&` (Logical AND)  | If both the operands are non-zero, then the condition becomes true.                                                  | (`A && B`) is true.    |
+| `\|\|` (Logical OR) | If any of the two operands are non-zero, then the condition becomes true.                                            | (`A \|\| B`) is true.  |
+| `!` (Logical NOT)   | Reverses the logical state of its operand. If a condition is true, then the Logical NOT operator will make it false. | `! (A && B)` is false. |
+
+### 📍 Bitwise Operators
+
+Bitwise operators perform operations on binary representations of integers. Assume variable A holds 2 and variable B holds 3, then −
+
+| Operator                      | Description                                                                                                                                                                                                                                                                                      | Example           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------- |
+| `&` (Bitwise AND)             | It performs a Boolean AND operation on each bit of its integer arguments.                                                                                                                                                                                                                        | (`A && B`) is 1   |
+| `\|` (BitWise OR)             | It performs a Boolean OR operation on each bit of its integer arguments.                                                                                                                                                                                                                         | (`A \| B`) is 3.  |
+| `^` (Bitwise XOR)             | It performs a Boolean exclusive OR operation on each bit of its integer arguments. Exclusive OR means that either operand one is true or operand two is true, but not both.                                                                                                                      | (`A ^ B`) is 1.   |
+| `~` (Bitwise Not)             | It is a unary operator and operates by reversing all the bits in the operand.                                                                                                                                                                                                                    | (`~B`) is -4.     |
+| `<<` (Left Shift)             | It moves all the bits in its first operand to the left by the number of places specified in the second operand. New bits are filled with zeros. Shifting a value left by one position is equivalent to multiplying it by 2, shifting two positions is equivalent to multiplying by 4, and so on. | (`A << 1`) is 4.  |
+| `>>` (Right Shift)            | Binary Right Shift Operator. The left operand's value is moved right by the number of bits specified by the right operand.                                                                                                                                                                       | (`A >> 1`) is 1.  |
+| `>>>` (Right shift with Zero) | This operator is just like the `>>` operator, except that the bits shifted in on the left are always zero.                                                                                                                                                                                       | (`A >>> 1`) is 1. |
+
+### 📍 Assignment Operators
+
+| Operator                       | Description                                                                                       | Example                                           |
+| ------------------------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `=` (Simple Assignment )       | Assigns values from the right side operand to the left side operand                               | `C = A + B` will assign the value of A + B into C |
+| `+=` (Add and Assignment)      | It adds the right operand to the left operand and assigns the result to the left operand.         | `C += A` is equivalent to `C = C + A `            |
+| `−=` (Subtract and Assignment) | It subtracts the right operand from the left operand and assigns the result to the left operand.  | `C -= A` is equivalent to `C = C - A `            |
+| `*=` (Multiply and Assignment) | It multiplies the right operand with the left operand and assigns the result to the left operand. | `C _= A` is equivalent to `C = C _ A `            |
+| `/=` (Divide and Assignment)   | It divides the left operand with the right operand and assigns the result to the left operand.    | `C /= A` is equivalent to `C = C / A`             |
+| `%=` (Modules and Assignment)  | It takes modulus using two operands and assigns the result to the left operand.                   | `C %= A` is equivalent to `C = C % A `            |
+
+**Note** − Same logic applies to Bitwise operators so they will become like `<<=`, `>>=`, `>>=`, `&=`, `|=` and `^=`
+
+---
+
+### 📍 Ternary Operator
+
+The conditional operator first evaluates an expression for a true or false value and then executes one of the two given statements depending upon the result of the evaluation.
+
+| Operator            | Description                                            |
+| ------------------- | ------------------------------------------------------ |
+| `? :` (Conditional) | If Condition is true? Then value X : Otherwise value Y |
+
+---
+
+## 🎯 Challenge
+
+**❓Can you write a Solidity contract that uses all three types of variables ad their scopes we've discussed today?**
+
+<details>
+
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint public myPublic = 10;
+    string internal myInternal = "Solidity";
+    address private myPrivate = 0xBF4979305B43B0eB5Bb6a5C67ffB89408803d3e1;
+
+    uint public timestamp = block.timestamp;
+}
+```
+
+</details>
+
+That's it for today's article! Keep learning and keep exploring the exciting world of Solidity and blockchain development. 💻🌐🚀
