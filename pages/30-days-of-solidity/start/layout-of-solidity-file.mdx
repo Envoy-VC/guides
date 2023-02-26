@@ -7,7 +7,7 @@ Let's start our journey with Solidity 🚀! Today we'll be diving into the layou
 Here is a basic layout of a Solidity source file-
 
 ```
-- SPDX License Identifier
+- License
 - Pragmas
 - Importing other Source Files
 - Comments
@@ -18,7 +18,7 @@ Let's get started with licenses
 
 ## 🪪 Licenses
 
-A _license_ is a legal agreement between the creator of a software and its users. It defines the terms and conditions under which the software can be used, modified, and distributed. By default, Solidity contracts are not licensed, which means anyone can use and modify them without permission. To license your Solidity contracts, you can include a license header at the beginning of your code.
+A _license_ is a legal agreement between the creator of a software and its users. It defines the terms and conditions under which the software can be used, modified, and distributed. By default, Solidity contracts are **not licensed**, which means anyone can use and modify them without permission. To license your Solidity contracts, you can include a license header at the beginning of your code.
 
 ```solidity filename="Contract.sol" copy
 // SPDX-License-Identifier: MIT
@@ -48,7 +48,7 @@ A pragma statement is a compiler directive that tells the compiler how to handle
 
 There are several types of pragma statements in Solidity, and we will be discussing the most common ones:
 
-- **Version Pragma** - This pragma statement is used to specify the version of Solidity that your code is written in. It ensures that your code is compiled with the correct version of the Solidity compiler. For example:
+- **Version Pragma** - This pragma statement is used to specify the version of Solidity that your code is written in. It ensures that your code is compiled with the correct version of the Solidity compiler. For example,
 
   ```solidity copy {1,4,7}
   pragma solidity ^0.8.14;
@@ -95,7 +95,7 @@ A better way to import symbols is to use the explicit syntax
 import {symbol1, symbol2} from "filename";
 ```
 
-This syntax allows you to choose exactly which symbols you want to import and avoids any naming conflicts.
+🤯 This syntax allows you to choose exactly which symbols you want to import and avoids any naming conflicts.
 
 You can also use the syntax
 

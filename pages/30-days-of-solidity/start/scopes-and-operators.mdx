@@ -1,4 +1,6 @@
-Welcome 👋 to **Day 3** of our 30 Days of Solidity! Today, we will be discussing variables, their types, scopes, and operators in Solidity. Variables can be categorized into different types based on their scope, such as state, local, and global. Additionally, variables can have different levels of access depending on their scope, which we will discuss today.
+Welcome 👋 to **Day 3** of 30 Days of Solidity! Today, we will be discussing variables, their types, scopes, and operators in Solidity. 
+
+Variables can be categorized into different types based on their scope, such as state, local, and global. Additionally, variables can have different levels of access depending on their scope, which we will discuss today.
 
 ## 🔭 Variable Scopes
 
@@ -32,13 +34,13 @@ In Solidity, variables can be categorized based on their scope, which determines
 
 - **State Variables**: State variables are declared at the contract level, and their values persist between function calls. Here's an example of a state variable declaration:
 
-  ```
+  ```solidity copy
   uint256  myStateVar = 15;
   ```
 
 - **Local Variables**: Local variables are declared within a function and have a limited scope. They can only be accessed within the function where they are declared. Here's an example of a local variable declaration:
 
-  ```
+  ```solidity copy
   function myFunction() public {
       uint256 myLocalVar = 10;
   }

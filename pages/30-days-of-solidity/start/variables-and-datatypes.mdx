@@ -8,7 +8,7 @@ So let's start!
 
 ## 📜 Initializing a Contract
 
-To create a new contract in Solidity, you can use the contract keyword like this:
+To create a new contract in Solidity, you can use the contract word like this:
 
 ```solidity copy
 contract MyContract {
@@ -39,13 +39,13 @@ By following these recommendations, you can help make your Solidity code more re
 
 ## 📏 Variables
 
-A variable is a named storage location in a Solidity program that holds a value of a certain data type. It can be changed during the execution of the program, and its value can be used in calculations and other operations.
+> A **variable** is a named storage location in a Solidity program that holds a value of a certain data type. It can be changed during the execution of the program, and its value can be used in calculations and other operations.
 
 While naming your variables in Solidity, it's important to follow some rules to ensure your code is readable and follows Solidity's syntax requirements.
 
 👉 Here are a few things to keep in mind when naming your variables in Solidity:
 
-- You should not use any of the Solidity reserved keywords as a variable name. For example, `break` or `boolean` variable names are not valid.
+- You **should not** use any of the Solidity reserved keywords as a variable name. For example, `break` or `boolean` variable names are not valid.
 - Solidity variable names should not start with a numeral (`0-9`). They must begin with a letter or an underscore`_` character. For example, `123test` is an invalid variable name but `_123test` is a valid one.
 - Solidity variable names are case-sensitive. For example, `Name` and `name` are two different variables.
 
@@ -65,9 +65,11 @@ static, supports, switch, typedef, typeof, var
 
 ```solidity copy
 <datatype> <variablename>;
+// or
+<datatype> <variablename> = <value>;
 ```
 
-### 🔢 Integer Types:
+### 🔢 Integer Types
 
 Solidity has several integer data types that can be used to store integer values. Integers can be either _signed_ or _unsigned_. Signed integers can store both positive and negative values, while unsigned integers can only store non-negative values. The following are the integer data types available in Solidity:
 
@@ -82,7 +84,7 @@ Solidity has several integer data types that can be used to store integer values
 uint myNumber = 10;
 ```
 
-### 🔢 Fixed Point Types:
+### 🔢 Fixed Point Types
 
 Fixed point numbers are used to represent decimal numbers with a fixed number of decimal places. Solidity has two fixed point types: `ufixed` and `fixed`. The ufixed data type represents an unsigned fixed point number, while the fixed data type represents a signed fixed point number.
 
@@ -101,11 +103,11 @@ Keywords `ufixedMxN` and `fixedMxN`, where `M` represents the number of bits tak
 The following are some examples of how to declare fixed point variables:
 
 ```solidity copy
-fixed myFixedNumber = 1.23;
-ufixed myUnsignedFixedNumber = 2.345;
+fixed myFixedNumber;
+ufixed myUnsignedFixedNumber;
 ```
 
-### 🪢 String Types:
+### 🪢 String Types
 
 The string data type is used to store a sequence of characters. Strings are declared by using the string keyword. Here's an example:
 
@@ -115,7 +117,7 @@ string myString = "Hello, world!";
 
 we can also use bytes with string for example, with `bytes32 samevar = "stringliteral";{solidity}` the string literal is interpreted in its raw byte form when assigned to a bytes32 type.
 
-### 👨‍💼 Address Types:
+### 🏠 Address Types
 
 The address data type is used to store Ethereum addresses. The address type comes in two largely identical flavors:
 
@@ -130,7 +132,7 @@ Example,
 address myAddress = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
 ```
 
-### 🎭 Boolean Types:
+### 🎭 Boolean Types
 
 The bool data type is used to store either true or false. Here's an example:
 

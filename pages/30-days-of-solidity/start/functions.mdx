@@ -12,7 +12,7 @@ function function_name(parameter1_type parameter1, parameter2_type parameter2)
     visibility
     state_mutability
     returns(return_type) {
-    // function code
+    // ...
 }
 ```
 
@@ -22,7 +22,7 @@ Let's break down each part of this syntax:
 - `parameter1_type` and `parameter2_type` are the data types of the input parameters.
 - `parameter1` and `parameter2` are the names of the input parameters.
 - `visibility` specifies who can call the function (e.g., public, private, internal, or external).
-- `state_mutability` specifies whether the function can modify the state of the contract (e.g., pure, view, or payable).
+- `state_mutability` specifies whether the function can modify the state of the contract (e.g., pure or view).
 - `returns` specifies the data type of the return value (if any).
 
 ## 📍 Function Parameters
@@ -98,7 +98,7 @@ contract FunctionOverloading {
 }
 ```
 
-In this example, we've defined two functions with the same name "add", but with different sets of parameters.
+In this example, we've defined two functions with the same name "add", but with different sets of parameters. 🤯
 
 Function overloading is a powerful feature that allows you to write more concise and expressive code. It can also help reduce the number of functions you need to write, since you can reuse the same function name with different parameter types.
 
@@ -188,3 +188,7 @@ contract Contract {
 ```
 
 </details>
+
+---
+
+That's it for today, we have looked at one of the most important parts of solidity i.e, functions and these are really important to make the code more efficient. In the next section we will discuss about control structures and how to take decisions, until then keep BUILDING... 🏃‍♂️
