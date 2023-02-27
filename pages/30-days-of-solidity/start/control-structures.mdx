@@ -1,0 +1,316 @@
+🚀 Welcome to **Day 5** of 30 Days of Solidity! Today, we'll be diving into loops and decision making in Solidity, including for loops, while loops, and do-while loops, if statements and if else ladders.
+
+## ➰ Loops
+
+Loops are an essential concept in programming and are used to execute a set of instructions repeatedly. In Solidity, loops can be used to iterate over arrays, mapping, and other data structures, making them a fundamental aspect of smart contract development. So, let's get started! 🛫
+
+### 🔁 For Loops
+
+A `for` loop is a type of loop that is used to execute a set of statements a fixed number of times. The for loop syntax in Solidity is similar to other programming languages, consisting of three parts: **initialization**, **condition**, and **iteration**.
+
+- 👉 **Initialization**: The initialization part is executed only once when the loop starts. This part is used to declare and initialize a variable that is used as a counter in the loop. For example, `uint i = 0;` initializes the variable `i` to `0`.
+
+- 👉 **Condition**: The condition part is a Boolean expression that is checked at the beginning of each iteration. If the condition is _true_, the loop continues. If it's _false_, the loop ends. For example, i < 10; is a condition that checks if the value of i is less than 10.
+
+- 👉 **Iteration**: The iteration part is executed at the end of each iteration. This part is used to modify the counter variable so that it can be used to control the loop. For example, `i++;` increments the value of `i` by `1`.
+
+Here's an example of a for loop that multiplies the value of `i` to a state variable `num`.
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint public num = 1;
+    function multiply() public {
+        for (uint i = 1; i <= 5; i++) {
+            num = num * i;
+        }
+    }
+}
+```
+
+In this example, we initialize the loop counter `i` to `1`, set the condition to `i` is less than or equal to `5`, and increment `i` by `1` after each iteration. The `num` state variable is multiplied by `i` in each iteration. After executing the function `multiply` the value of num will be `120`.
+
+### 🔁 While Loops
+
+A while loop is a type of loop that is used to execute a set of statements as long as the condition is true. The syntax of a while loop in Solidity is straightforward:
+
+```solidity copy
+while (condition) {
+    // Statements to execute while condition is true
+}
+```
+
+Here's an example of a while loop that prints the numbers 1 through 5:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint public num = 1;
+    function sum() public {
+        while(num < 5) {
+            num = num + 1;
+        }
+    }
+}
+```
+
+In this example, the condition `num < 5` is checked at the beginning of each iteration to determine whether to continue iterating. The value of `num` is incremented by `1` in each iteration. After executing the function `sum` the value of `num` will be `5`.
+
+### 🔁 Do-While Loops
+
+A do-while loop is a type of loop that is used to execute a set of statements at least once and then repeatedly executes them as long as the condition is true. The syntax of a do-while loop in Solidity is similar to that of a while loop, with the condition checked at the end of the loop:
+
+```solidity copy
+do {
+    // Statements to execute at least once
+} while (condition);
+```
+
+Here's an example of a do-while loop that prints the numbers 1 through 5:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint public num = 1;
+    function multiply() public {
+        do {
+            num = num + 1;
+        } while(num < 0);
+    }
+}
+```
+
+In this example, the condition `num < 0` which is always false is checked at the end of the loop to determine whether to continue iterating. The loop will be executed one time and the condition will be checked at the end of the loop. The value of `num` will be `2` as the condition evaluates to false and loop breaks.
+
+## 🤔 Decision Making
+
+Decision making is a fundamental concept in programming that allows a program to make choices based on certain conditions. In Solidity, decision making is implemented using conditional statements such as if, if-else, and if-else ladders.
+
+### 👉 If Statement
+
+The if statement is the simplest form of conditional statement in Solidity. It executes a block of code only if a certain condition is true. Here's an example:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function isAbove18(uint8 _age) public pure returns(bool result) {
+        if(_age > 18) return true;
+    }
+}
+```
+
+In this example, the when function `isAbove18` is executed it checks if the user's age is greater than or equal to 18. If it is, it returns true.
+
+### 👉 If-Else Statement
+
+The if-else statement is used when you want to execute one block of code if a certain condition is true and another block of code if it's false. Here's an example:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function evenOdd(uint _number) public pure returns(string memory) {
+        if (_number % 2 == 0) {
+            return "The number is even";
+        } else {
+            return "The number is odd";
+        }
+    }
+}
+```
+
+In this example, the function checks if the number is even or odd using the modulo `%` operator. If the number is even, the first block of code is executed, and if it's odd, the second block of code is executed.
+
+### 👉 If-Else Ladder
+
+The if-else ladder is used when you have multiple conditions to check. It executes a specific block of code based on the first condition that is true. Here's an example:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function grade(uint _marks) public pure returns(string memory) {
+        if (_marks >= 90) {
+            return "You got a A!";
+        } else if (_marks >= 80) {
+            return "You got a B!";
+        } else if (_marks >= 70) {
+            return "You got a C!";
+        } else if (_marks >= 60) {
+            return "You got a D!";
+        } else {
+            return "You Failed!";
+        }
+    }
+}
+```
+
+In this example, the function checks the user's marks and logs a message based on their grade. If the score is greater than or equal to 90, the first block of code is executed, and so on.
+
+## ⛔️ Break and Continue
+
+In addition to the standard loop syntax, Solidity also supports break and continue statements, which can be used to alter the flow of execution within a loop. The break statement is used to exit a loop prematurely, while the continue statement is used to skip the current iteration and move on to the next.
+
+Here's an example of a for loop that uses a break statement to exit the loop early:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint public num = 1;
+    function increase() public {
+        for(uint i = 0; i < 10; i++) {
+            if(i == 5) {
+                continue;
+            }
+            num = num + i;
+        }
+    }
+}
+```
+
+In this example. we declare a public variable called `num` and when we call the function `increase` it will increase the value of `num` by `i` until the value of `i` is equal to `5`. At `i == 5` the loop will break and the value of num will be `11`.
+
+Here's an example of a for loop that uses a continue statement to skip even numbers:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint public num = 1;
+    function increase() public {
+        for(uint i = 0; i < 10; i++) {
+            if(i == 5) {
+                continue;
+            }
+            num = num + i;
+        }
+    }
+}
+```
+
+In this example, we initialize a public variable called `num` to `1` and when we call the function `increase` it will increase the value of `num` by `i` until the value of `i` is equal to `5`. At `i == 5` the loop will skip that particular iteration and go to the case when value of `i` is `6`. The loop will execute normally and after execution the value of `i` will be `41`.
+
+---
+
+## 🎯 Challenge
+
+👨‍💻 Now that you've learned about loops and decision making in Solidity, it's time to put your skills to the test with some fun challenges!
+
+**❓ Write a Solidity function called count that takes a single integer parameter num and returns the number of even numbers between 1 and num. For example, if num is 8, the function should return 4, since there are 4 even numbers between 1 and 8 (2, 4, 6, 8).**
+
+<details>
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function evenNumbers(uint num) public pure returns (uint) {
+        uint count = 0;
+        for (uint i = 0; i <= num; i++) {
+            if (i % 2 == 0) {
+            count++;
+            }
+        }
+        return count;
+    }
+}
+```
+
+</details>
+
+---
+
+**❓ Write a Solidity function called maxOfThree that takes three integer parameters a, b, and c and returns the maximum of the three numbers.**
+
+<details>
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function maxOfThree(int a, int b, int c) public pure returns (int) {
+        if (a >= b && a >= c) {
+            return a;
+        } else if (b >= a && b >= c) {
+            return b;
+        } else {
+            return c;
+        }
+    }
+}
+```
+
+> 💡 **Tip**: you can also solve this by using ternary operators, here's the code
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function maxOfThree(int a, int b, int c) public pure returns (int) {
+        int max = (a > b) ?
+            (a > c ? a : c) :
+            (b > c ? b : c);
+        return max;
+    }
+}
+```
+
+</details>
+
+---
+
+**❓ Write a Solidity function called `isPrime` that takes an integer as input and returns a boolean value indicating whether the input is a prime number or not.**
+
+> 💡 **Hint**: A number is prime if it is not divisible by any number except 1 and itself. You can use a loop to check if the input number is divisible by any numbers between some 2 integers.
+
+<details>
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function isPrime(int n) public pure returns (bool) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+            return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+In this function, we first check if the input `n` is less than or equal to `1`. If so, we return `false` because `1` and all negative numbers are not prime. Then, we use a for loop to check all possible factors of `n` from `2` to `n/2`. If any of them divides n exactly, then n is not a prime number, so we return `false`. If we have checked all possible factors and none of them divide n exactly, then n is a prime number, so we return `true`.
+
+> 💡 **Tip**: You can optimize this function by checking the factors only up to the square root of n. Can you modify this function to use this optimization?
+
+</details>
+
+---
+
+🎉 That's it for today and good job on completing this Solidity challenge! 🚀. We covered loops and conditional statements in Solidity! We covered for for loops, while loops, do-while loops, if statements, if-else statements, ladders as well as break and continue statements.
+
+We hope you found this article informative and engaging. See you in the next one! ✨

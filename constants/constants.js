@@ -19,4 +19,9 @@ export const days = [
     icon: "4️⃣ ",
     url: "/30-days-of-solidity/start/functions",
   },
+  {
+    title: "Control Structures",
+    icon: "5️⃣ ",
+    url: "/30-days-of-solidity/start/control-structures",
+  },
 ];

@@ -71,9 +71,13 @@ const config = {
   ),
   useNextSeoProps() {
     const { asPath } = useRouter();
-    if (asPath !== "/") {
+    if (asPath === "/") {
       return {
         titleTemplate: "%s",
+      };
+    } else if (asPath === "/30-days-of-solidity") {
+      return {
+        titleTemplate: "30 Days of Solidity",
       };
     } else {
       return {

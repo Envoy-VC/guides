@@ -2,5 +2,6 @@
   "layout-of-solidity-file": "Layout of a Solidity File",
   "variables-and-datatypes": "Variables and Datatypes",
   "scopes-and-operators": "Scopes and Operators",
-  "functions": "Functions"
+  "functions": "Functions",
+  "control-structures": "Control Structures"
 }
