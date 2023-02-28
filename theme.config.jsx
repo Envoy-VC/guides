@@ -92,20 +92,9 @@ const config = {
       if (route == "/") {
         const seo = SEO.home;
         return seo;
-      } else if (slugs.length == 2) {
+      } else if (slugs.length >= 2) {
         const seo = SEO[slugs[1]];
-        const img = seo.image();
-        return { ...seo, image: img };
-      } else if (slugs.length > 2) {
-        if (SEO[slugs[1]][slugs[slugs.length - 1]] !== undefined) {
-          const seo = SEO[slugs[1]][slugs[slugs.length - 1]];
-          const img = seo.image();
-          return { ...seo, image: img };
-        } else {
-          const seo = SEO[slugs[1]];
-          const img = seo.image();
-          return { ...seo, image: img };
-        }
+        return seo;
       }
     };
 
