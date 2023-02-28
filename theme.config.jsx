@@ -75,15 +75,11 @@ const config = {
     const { asPath } = useRouter();
     if (asPath === "/") {
       return {
-        titleTemplate: "%s",
+        titleTemplate: "Guides",
       };
     } else if (asPath === "/30-days-of-solidity") {
       return {
         titleTemplate: "30 Days of Solidity",
-      };
-    } else {
-      return {
-        titleTemplate: "Guides",
       };
     }
   },
