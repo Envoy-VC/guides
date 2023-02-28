@@ -3,6 +3,10 @@ export const days = [
     title: "Layout of a Solidity File",
     icon: "1️⃣ ",
     url: "/30-days-of-solidity/start/layout-of-solidity-file",
+    seo: {
+      title: "Layout of a Solidity File",
+      description: "Learn how to write a Solidity file.",
+    },
   },
   {
     title: "Variables and Datatypes",
@@ -25,3 +29,11 @@ export const days = [
     url: "/30-days-of-solidity/start/control-structures",
   },
 ];
+
+export const SEO = {
+  "30-days-of-solidity": {
+    title: "30 Days of Solidity",
+    description: "Master Solidity and Smart Contract Development",
+
+  },
+};
