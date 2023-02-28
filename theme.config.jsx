@@ -101,9 +101,15 @@ const config = {
         const img = seo.image();
         return { ...seo, image: img };
       } else if (slugs.length > 2) {
-        const seo = SEO[slugs[1]][slugs[slugs.length - 1]];
-        const img = seo.image();
-        return { ...seo, image: img };
+        if (SEO[slugs[1]][slugs[slugs.length - 1]] !== undefined) {
+          const seo = SEO[slugs[1]][slugs[slugs.length - 1]];
+          const img = seo.image();
+          return { ...seo, image: img };
+        } else {
+          const seo = SEO[slugs[1]];
+          const img = seo.image();
+          return { ...seo, image: img };
+        }
       }
     };
 
