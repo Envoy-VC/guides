@@ -94,14 +94,13 @@ const config = {
 
     const generateSEO = () => {
       if (route == "/") {
-        const seo = {
-          title: "Guides",
-          description: "Tutorials",
-          image: "https://guides.vedantc.dev/api/og",
-        };
+        const seo = SEO.home;
         return seo;
-      } else if (slugs.length >= 2) {
+      } else if (slugs.length == 2) {
         const seo = SEO[slugs[1]];
+        return seo;
+      } else if (slugs.length > 2) {
+        const seo = SEO[slugs[1]][slugs[slugs.length - 1]];
         return seo;
       }
     };
@@ -120,16 +119,16 @@ const config = {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@Envoy_1084" />
         <meta name="twitter:site:domain" content="https://guides.vedantc.dev" />
-        <meta name="twitter:title" content={title} />
+        <meta name="twitter:title" content={route === "/" ? "Guides" : title} />
         <meta name="twitter:description" content={seo.description} />
         <meta name="twitter:creator" content="@Envoy_1084" />
-        <meta name="twitter:image" content={seo.image} />
+        <meta name="twitter:image" content={seo.image()} />
 
         {/* Open Graph data */}
         <meta property="og:locale" content="en_US" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={route === "/" ? "Guides" : title} />
         <meta property="og:url" content="https://guides.vedantc.dev" />
-        <meta property="og:image" content={seo.image} />
+        <meta property="og:image" content={seo.image()} />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
