@@ -1,5 +1,3 @@
-const domain = "https://guides.vedantc.dev";
-
 export const days = [
   {
     title: "Layout of a Solidity File",
@@ -36,12 +34,12 @@ export const SEO = {
   home: {
     title: "Guides",
     description: "Learn how to build a decentralized application.",
-    image: `${domain}/api/og`,
+    image: "https://guides.vedantc.dev/api/og",
   },
   "30-days-of-solidity": {
     title: "30 Days of Solidity",
     description: "Master Solidity and Smart Contract Development",
     image:
-      "https://guides.vedantc.dev/api/og?title=30 Days of Solidity&tagline=Buckle Up and Get Ready for a Solidity Adventure Like No Other",
+      "https://guides.vedantc.dev/api/og?title=30 Days of Solidity&tagline=Buckle Up and Get Ready for a Solidity Adventure Like No Other&tutorial=GUIDES",
   },
 };
