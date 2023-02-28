@@ -81,6 +81,10 @@ const config = {
       return {
         titleTemplate: "30 Days of Solidity",
       };
+    } else {
+      return {
+        titleTemplate: "%s",
+      };
     }
   },
   head: function useHead() {

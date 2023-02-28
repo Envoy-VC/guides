@@ -1,8 +1,3 @@
-export const taglines = {
-  soliditySeries:
-    "Buckle Up and Get Ready for a Solidity Adventure Like No Other",
-};
-
 const domain = "https://guides.vedantc.dev";
 
 export const days = [
@@ -46,6 +41,7 @@ export const SEO = {
   "30-days-of-solidity": {
     title: "30 Days of Solidity",
     description: "Master Solidity and Smart Contract Development",
-    image: `${domain}/api/og?title=30%20Days%20of%20Solidity&tagline=${taglines.soliditySeries}&tutorial=GUIDES`,
+    image:
+      "https://guides.vedantc.dev/api/og?title=30 Days of Solidity&tagline=Buckle Up and Get Ready for a Solidity Adventure Like No Other",
   },
 };
