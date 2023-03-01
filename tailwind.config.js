@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      rubik: ["Rubik", "sans-serif"],
+    },
   },
   plugins: [],
+  darkMode: "class",
 };

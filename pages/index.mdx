@@ -1,5 +1,162 @@
-import "../styles/index.css";
+import Link from "next/link";
+import cn from "clsx";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-<div className="max-w-[1400px] mx-auto text-[64px] border-2 border-[#fff]">
-  Hello
+import { Features, Feature } from "../components/features";
+
+import styles from "./index.module.css";
+import "../styles/index.css";
+import solidityCard from "../public/solidity-card.png";
+import solidityCardDark from "../public/solidity-card-dark.png";
+
+<div className="home-content">
+  <div className="content-container">
+    <h1 className="headline">Explore the World of Web3 <br className='sm:block hidden'/>with engaging Tutorials.</h1>
+    <p className="subtitle mt-[2rem]">Enter the World of Web3: Your Ultimate Destination for Accessible <br className='sm:block hidden'/>and Engaging Blockchain Education.</p>
+  </div>
+
+  <div className="features-container">
+    <div className="content-container">
+
+      <Features>
+
+        {/* 30 Days of Solidity Card */}
+        <Feature index={0} large centered id="soliditySeries-card" href="/30-days-of-solidity">
+          <Image src={solidityCard} alt="Background" loading="eager" />
+          <Image src={solidityCardDark} alt="Background (Dark)" loading="eager" />
+          <h3>30 DAYS OF <br className="show-on-mobile"/>SOLIDITY</h3>
+        </Feature>
+
+        {/* Polygon DeepDive Card */}
+
+        <Feature index={4} centered style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundImage: 'url(/polygon-bg.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          color: '#000',
+        }} href="/polygon-deep-dive" className="h-[40vh] lg:h-[60vh]">
+
+          <h3 className="font-black font-rubik">💜 Polygon Deep Dive</h3>
+          <p style={{
+            textShadow: '0 2px 4px rgb(0 0 0 / 20%)'
+          }} className="font-medium font-rubik">Begin a journey of discovery with Web3's most exciting platform and uncover the Full Potential of Polygon through a Deep Dive Series.</p>
+        </Feature>
+
+
+      </Features>
+    </div>
+
+  </div>
+  <style jsx>{`
+  .content-container {
+    max-width: 90rem;
+    padding-left: max(env(safe-area-inset-left), 1.5rem);
+    padding-right: max(env(safe-area-inset-right), 1.5rem);
+    margin: 0 auto;
+  }
+  .features-container {
+    margin: 8rem 0 0;
+    padding: 4rem 0;
+    background-color: #f3f4f6;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .features-container .content-container {
+    margin-top: -8rem;
+  }
+  :global(.dark) .features-container {
+    background-color: #000;
+    border-bottom: 1px solid rgb(38, 38, 38);
+  }
+  .headline {
+    display: inline-block;
+    font-size: 3.125rem;
+    font-size: min(4.375rem, max(8vw, 2.5rem));
+    font-weight: 700;
+    font-feature-settings: initial;
+    letter-spacing: -0.12rem;
+    margin-left: -0.2rem;
+    margin-top: 3.4rem;
+    line-height: 1.3;
+    background-image: linear-gradient(146deg, #000, #757a7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  :global(.dark) .headline {
+    background-image: linear-gradient(146deg, #fff, #757a7d);
+  }
+  .subtitle {
+    font-size: 1.3rem;
+    font-size: min(1.3rem, max(3.5vw, 1.2rem));
+    font-feature-settings: initial;
+    line-height: 1.6;
+  }
+  :global(#soliditySeries-card) {
+    color: #fff;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  }
+  :global(#soliditySeries-card img) {
+    object-fit: cover;
+    object-position: left;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+  :global(#soliditySeries-card img:nth-child(2)) {
+    display: none;
+  }
+  :global(.dark #soliditySeries-card img:nth-child(2)) {
+    display: initial;
+  }
+  :global(.dark #soliditySeries-card img:nth-child(1)) {
+    display: none;
+  }
+  .bg-polygon {
+  overflow: hidden;
+  background-color: transparent;
+  }
+  :bg-polygon::before {
+    content: '';
+    background-image: url(https://www.securities.io/wp-content/uploads/2023/01/Polygon-Featured.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    filter: blur(30px);
+    z-index: -1;
+  }
+  @media screen and (max-width: 1200px) {
+    .headline {
+      letter-spacing: -0.08rem;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    :global(#soliditySeries-card) {
+      aspect-ratio: 135/86;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    :global(#soliditySeries-card) {
+      min-height: 348px;
+      width: 100%;
+      aspect-ratio: auto;
+    }
+    :global(#soliditySeries-card img) {
+      object-position: -26px 0;
+      width: 250%;
+      max-width: initial;
+    }
+  }
+`}</style>
 </div>
