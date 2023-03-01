@@ -64,6 +64,10 @@ const config = {
       return {
         titleTemplate: "30 Days of Solidity",
       };
+    } else if (asPath === "/polygon-deep-dive") {
+      return {
+        titleTemplate: "Polygon Deep Dive",
+      };
     } else {
       return {
         titleTemplate: "%s",

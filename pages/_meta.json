@@ -10,5 +10,10 @@
   "30-days-of-solidity": {
     "type": "page",
     "title": "30 Days of Solidity"
+  },
+  "polygon-deep-dive": {
+    "type": "page",
+    "title": "Polygon Deep Dive",
+    "display": "hidden"
   }
 }
