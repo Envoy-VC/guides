@@ -4,11 +4,11 @@ import { Logo, Footer } from "./components";
 import { SEO } from "./constants/constants";
 
 const config = {
-  docsRepositoryBase: "https://github.com/Envoy-VC/30-Days-of-Solidity",
+  docsRepositoryBase: "https://github.com/Envoy-VC/guides/tree/main/",
   logo: <Logo />,
   logoLink: true,
   project: {
-    link: "https://github.com/Envoy-VC/30-Days-of-Solidity",
+    link: "https://github.com/Envoy-VC/guides",
   },
   search: {
     placeholder: "Search",
