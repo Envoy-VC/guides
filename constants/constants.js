@@ -32,14 +32,21 @@ export const days = [
 
 export const SEO = {
   home: {
-    title: "Guides",
-    description: "Learn how to build a decentralized application.",
-    image: "https://guides.vedantc.dev/api/og",
+    title: "Web3 Guides",
+    description:
+      "Get ready to discover the limitless potential of Web3 and blockchain technology with comprehensive educational resources! We've got you covered from smart contracts to NFTs to Web3 protocols, so you can fully embrace this cutting-edge technology. Think of it as a treasure map to the world of blockchain 🗺️",
+    image: "https://i.ibb.co/S01v2hW/guides-og.png",
   },
   "30-days-of-solidity": {
     title: "30 Days of Solidity",
-    description: "Master Solidity and Smart Contract Development",
-    image:
-      "https://guides.vedantc.dev/api/og?title=30 Days of Solidity&tagline=Buckle Up and Get Ready for a Solidity Adventure Like No Other&tutorial=GUIDES",
+    description:
+      "Get ready to embark on an exciting journey into the world of smart contracts with 30 Days of Solidity! Over the course of 30 days, we'll cover everything you need to know about building smart contracts on the blockchain using Solidity - from the basics to advanced concepts.Join today and unleash your potential as a blockchain developer!",
+    image: "https://i.ibb.co/T40fWH6/solidity-series-og.png",
+  },
+  "polygon-deep-dive": {
+    title: "Polygon Deep Dive",
+    description:
+      "Want to stay ahead of the curve when it comes to Ethereum Layer 2 chains? Explore 💜 Polygon Deep Dive! This tutorial series offers a comprehensive exploration of Polygon, covering its PoS system, zkEVM, and much more.",
+    image: "https://i.ibb.co/f2RJWwP/polygon-deep-dive-og.png",
   },
 };
