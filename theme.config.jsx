@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useConfig } from "nextra-theme-docs";
-import { Logo } from "./components";
+import { Logo, Footer } from "./components";
 import { SEO } from "./constants/constants";
 
 const config = {
@@ -30,24 +30,7 @@ const config = {
     toggleButton: true,
   },
   footer: {
-    text: (
-      <span>
-        <a
-          href="https://spdx.org/licenses/GPL-3.0-or-later.html"
-          target="_blank"
-          rel="license noopener noreferrer"
-        >
-          GNU GPLv3 @{new Date().getFullYear()}
-        </a>
-        <br />
-        <a
-          href="https://github.com/Envoy-VC/30-Days-of-Solidity"
-          target="_blank noopener noreferrer"
-        >
-          30 Days of Solidity
-        </a>
-      </span>
-    ),
+    text: <Footer />,
   },
   head: (
     <>
