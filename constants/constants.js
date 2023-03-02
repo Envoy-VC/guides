@@ -46,7 +46,7 @@ export const SEO = {
     title: "30 Days of Solidity",
     description:
       "Get ready to embark on an exciting journey into the world of smart contracts with 30 Days of Solidity! Over the course of 30 days, we'll cover everything you need to know about building smart contracts using Solidity.",
-    image: "https://i.ibb.co/T40fWH6/solidity-series-og.png",
+    image: "https://i.ibb.co/Fz29XQR/solidity-series-og.png",
   },
   "polygon-deep-dive": {
     title: "Polygon Deep Dive",
