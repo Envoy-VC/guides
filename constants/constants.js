@@ -28,6 +28,11 @@ export const days = [
     icon: "5️⃣ ",
     url: "/30-days-of-solidity/start/control-structures",
   },
+  {
+    title: "Arrays and Data Locations",
+    icon: "6️⃣ ",
+    url: "/30-days-of-solidity/start/arrays-and-data-locations",
+  },
 ];
 
 export const SEO = {

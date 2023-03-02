@@ -3,5 +3,6 @@
   "variables-and-datatypes": "Variables and Datatypes",
   "scopes-and-operators": "Scopes and Operators",
   "functions": "Functions",
-  "control-structures": "Control Structures"
+  "control-structures": "Control Structures",
+  "arrays-and-data-locations": "Arrays and Data Locations"
 }

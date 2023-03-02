@@ -1,0 +1,349 @@
+import { Callout } from "nextra-theme-docs";
+
+Welcome to **Day 6** of 30 Days of Solidity 🚀! Today, we'll be exploring one of the most important data structures in Solidity: _Arrays_. Arrays are used to store collections of data in Solidity, and they come in a variety of types and sizes. Let's dive in and learn more! 🌊
+
+## 🤔 What Are Arrays?
+
+An array is a collection of elements of the same type that are stored contiguously in memory. Arrays are used to store lists of values, like a list of numbers or a list of addresses.
+
+Arrays are useful for a wide range of applications in Solidity. For example, you might use an array to store a list of user addresses that have contributed to your crowdfunding campaign. You could also use an array to store the historical prices of a particular asset.
+
+## 📝 Syntax and Initialization
+
+In Solidity, arrays can be declared and initialized in a variety of ways. Let's take a look at the syntax and different ways to initialize arrays.
+
+```solidity copy
+<data-type>[] <name>;
+```
+
+For example, to declare an array of `uint` values called `myArray`, we would use the following code:
+
+```solidity copy
+uint[] myArray;
+```
+
+To initialize an array with a fixed size, we can use the `new` keyword followed by the size of the array:
+
+```solidity copy
+uint[] myArray = new uint[](10);
+```
+
+Here we are declaring an array of `uint` values called `myArray` and initializing it with a size of 10.
+
+Arrays can also be initialized with specific values using an array literal. An array literal is a comma-separated list of values enclosed in curly braces.
+
+Here's an example of how to declare and initialize an array using an array literal:
+
+```solidity copy
+uint[] myArray = [1, 2, 3, 4, 5];
+```
+
+In this example, we declare an array called myArray and initialize it with the values `1`, `2`, `3`, `4`, and `5`.
+
+## 🪢 Bytes and Strings as Arrays
+
+- **Bytes** - Bytes are used to represent sequences of bytes, and can be used to store binary data or character data. In Solidity, a byte is represented by the keyword byte.
+
+  Here's an example of how to declare a byte array:
+
+  ```solidity copy
+  bytes[5] public myBytes;
+  ```
+
+  In this example, we declare an array of bytes called myBytes with a length of 5.
+
+  <Callout type="info" emoji="ℹ️">
+    You should use `bytes` over `bytes1[]` because it is cheaper, since using
+    `bytes1[]` in memory adds 31 padding bytes between the elements.
+  </Callout>
+
+- **Strings** - Strings in Solidity are also represented by arrays of bytes, but they are typically used to store text. Strings are represented by the keyword string.
+
+  Here's an example of how to declare and initialize a string array:
+
+  ```solidity copy
+  string myString = "Hello, world!";
+  ```
+
+  In this example, we declare a string called `myString` and initialize it with the value "Hello, world!".
+
+### ⚖️ Comparing Strings
+
+In Solidity, you can compare two strings using the built-in `keccak256` function. Here's an example of how to compare two strings:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function compareStrings(string memory a, string memory b) public pure returns (bool) {
+        return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
+    }
+}
+```
+
+In this example, we define a function called `compareStrings` that takes two string arguments `a` and `b`, and returns a boolean value indicating whether they are equal.
+
+## 👥 Array Members
+
+- 📏 **Length** - The length property returns the length of an array. Here's an example of how to use it:
+
+  ```solidity copy
+  uint256[] myArray = [1, 2, 3, 4, 5];
+  uint256 public arrayLength = myArray.length; // arrayLength is now 5
+  ```
+
+  In this example, we declare an array of `uint256` called `myArray` and initialize it with five elements. We then use the length property to get the length of the array, which is `5`.
+
+- 🤜 **Push** - The push function allows you to add elements to the end of an array. Here's an example of how to use it:
+
+  ```solidity copy
+  // SPDX-License-Identifier: MIT
+  pragma solidity ^0.8.14;
+
+  contract Contract {
+      uint256[] public myArray = [1,2,3];
+      function insert(uint256 i) public {
+          myArray.push(i);
+      }
+  }
+  ```
+
+  In this example, we declare an array of `uint256` called `myArray` and initialize it with three elements. We then use the insert function to add a new element to the end of the array.
+
+- 🤯 **Pop** - The pop function allows you to remove the last element from an array. Here's an example of how to use it:
+
+  ```solidity copy
+  // SPDX-License-Identifier: MIT
+  pragma solidity ^0.8.14;
+
+  contract Contract {
+      uint256[] public myArray = [1,2,3];
+      function remove() public {
+          myArray.pop();
+      }
+  }
+  ```
+
+  In this example, we declare an array of uint256 called `myArray` and initialize it with three elements. We then use a function callled remove to pop the last array element, after calling the function the array becomes `[1, 2]`.
+
+- ❌ **delete** - The delete function is used to reset any specific index elements from the array. For example,
+
+  ```solidity copy
+  // SPDX-License-Identifier: MIT
+  pragma solidity ^0.8.14;
+
+  contract Contract {
+      uint256[] public myArray = [1,2,3,4,5];
+      function deleteElement(uint256 index) public {
+          delete myArray[index];
+      }
+  }
+  ```
+
+  <Callout type="info" emoji="ℹ️">
+    Delete does not change the array length.It resets the value at index to it's
+    default value, in this case `0`
+  </Callout>
+
+  In this example, we declare an array of `uint256` called `myArray` and initialize it with five elements. We then use a deleteElement function to take in an argument `index` and delete the element at that index.
+
+## 📦 Data Locations
+
+When working with arrays in Solidity, it's important to understand the different data locations that are available. In Solidity, there are three main data locations: `memory`, `calldata`, and `storage`.
+
+### 🧠 Memory
+
+Memory is a temporary data location that is used to store values during execution. When a function is called, any variables declared inside the function are automatically stored in memory. Memory is limited in size and any data stored in memory is cleared when the function execution completes.
+
+Here's an example of how to declare an array in memory:
+
+```solidity copy
+function foo() public {
+    uint[] memory myArray = new uint[](10);
+}
+```
+
+In this example, we declare a new array called `myArray` in memory that can hold up to `10` uint values.
+
+### 📁 Storage
+
+Storage is a persistent data location that is used to store values between function calls. Any variables declared outside of a function, or declared inside a function with the storage keyword, are automatically stored in storage.
+
+Here's an example of how to declare an array in storage:
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint[] public myArray = [1,5,4,7,9];
+
+    function foo(uint value) public {
+        uint[] storage _arr = myArray;
+        _arr.push(value);
+    }
+}
+```
+
+In the above example we declare a array called `myArray` and then initialize it with some values. We then declare a function called `foo` which takes in a `uint` value as an argument. Inside the function we declare a new array called `_arr` and assign it to `myArray` which is in storage of the contract. We then push the value passed as an argument to the `_arr` array.
+
+### 📡 Calldata
+
+Calldata is a specific data location in Solidity that is used to hold the input arguments of a function call or transaction. It is a read-only data location, which means that the data cannot be modified or changed. Calldata is allocated by the caller, making it different from memory, which is allocated by the callee.
+
+The calldata is a data location that is unique to any EVM-based blockchain, with some layout differences:
+
+- the first '4' bytes correspond to the function signature selector.
+- the remaining bytes are the function's input arguments. Every input argument is '32' bytes long. The argument is **padded** if its type is less than 32 bytes.
+
+> **Note** - Depending on their nature, input arguments are padded on the right or left (for example, uintN or address are padded on the left, while bytesN are padded on the right).
+
+#### How is calldata different from memory?
+
+Calldata is commonly misunderstood with memory or as "a specific location in memory". Because it is a separate data location, calldata is not the same as memory. To understand how it differs from memory, we must first grasp its purpose, but more importantly, where it comes from.
+
+> One way to think about the difference (between calldata and memory) and how to use them is that calldata is allocated by the caller, but memory is allocated by the callee."
+
+#### Benefits and Features
+
+Calldata has several benefits and features that make it an essential data location in Solidity.
+
+- **Non-modifiable (Read-only)**: The data in calldata cannot be modified or changed, making it a secure data location for storing sensitive information.
+- **Almost Unlimited in Size**: Calldata is virtually unlimited in size, making it an ideal data location for storing large amounts of data.
+- **Cheap and Gas-Efficient**: Reading and allocating bytes in calldata is cheap and gas-efficient, making it an optimal data location for storing frequently accessed data.
+- **Non-Persistent**: Calldata is non-persistent, meaning that the data stored in calldata is erased after the contract execution is completed.
+- **Specific to Transactions and Contract Calls**: Calldata is specific to transactions and contract calls, making it an ideal data location for storing input arguments of function calls and transactions.
+
+Even though calldata is read-only and cannot be written to, it has a cost. Nonetheless, as compared to other data locations, this cost is rather low in terms of gas.
+
+Each byte of calldata costs:
+
+- 4 gas For zero bytes(0x00)
+- 16 gas For non-zero bytes
+
+---
+
+Here is an example,
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    function foo(string memory str) public pure returns(string memory) {
+        // You can modify the arguments when passed with memory location
+        str = string.concat(str ," - 30 Days of Solidity");
+        return str;
+    }
+
+    function bar(string calldata str) public pure returns(string memory) {
+        // this gives error as calldata arguments cannot be modified
+        str = string.concat(str ," - 30 Days of Solidity");
+        return str;
+    }
+}
+```
+
+Here in the function `foo` we pass the argument `str` with memory location. This allows us to modify the argument. In the function `bar` we pass the argument `str` with calldata location. This does not allow us to modify the argument.
+
+#### Accessing Calldata
+
+Let's look at the Yellow Paper for a second. The following fields are defined in the calldata as the execution environment:
+
+![Calldata](assets/30-days-of-solidity/calldata.jpg)
+
+In Solidity, such fields are accessible via the global variable msg. This global variable provides access to various calldata information, including the following:
+
+- `msg.sender` = the address from which the message call was initiated.
+- `msg.value` = the value sent during the call or transaction.
+- `msg.sig` is the function identification (the first 4 bytes of the keccak256 hash of the function signature). This is identical to reading the first four bytes of the calldata.
+- `msg.data` = accesses the complete calldata, including the function selector.
+- `gasleft()` = the quantity of gas remaining in the transaction."
+
+---
+
+## 🎯 Challenge
+
+👨‍💻 Let's test your understanding of arrays and data locations in Solidity!
+
+**❓ Write a Solidity code that creates an array of integers and adds a new element to it using the `push()` function. Then, write a function that loops through the array and returns the sum of all the elements.**
+
+<details>
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    uint[] public myArray;
+
+    function addElement(uint _value) public {
+        myArray.push(_value);
+    }
+
+    function sumArray() public view returns (uint) {
+        uint sum = 0;
+        for (uint i = 0; i < myArray.length; i++) {
+            sum += myArray[i];
+        }
+        return sum;
+    }
+}
+```
+
+In this code, we first define a dynamic array of type uint called `myArray`. We then create a function `addElement` that takes a uint value as input and uses the `push()` function to add it to the end of myArray.
+
+Finally, we create a function `sumArray` that loops through myArray and adds up all the values to return the `sum`.
+
+</details>
+
+**❓ Write a function called `sig` which stores a function signature to a public variable using `msg.data` global variable**
+
+> **💡 Hint** - The first 4 bytes of the calldata is the function signature. you can slice the first 4 bytes of the calldata `msg.data`
+
+<details>
+<summary>⬇️ Answer</summary>
+
+```solidity copy
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.14;
+
+contract Contract {
+    bytes public signature;
+
+    function sig() public {
+        signature = msg.data[:4];
+    }
+}
+```
+
+The syntax `data[start:end]` is only usable for bytes variables pointing to calldata, not memory. This is due to the fact that the calldata is read-only and the compiler can optimise access to it.
+
+Calldata slices allow you to grab calldata slices. The returning slice is of type bytes. It is used by specifying the following:
+
+- the offset from which to begin slicing.
+- the offset that determines where the slicing should terminate.
+
+A colon `:` divides the beginning and the end. You can also emit the start or the finish. If the start parameter is omitted, slicing will begin at offset `0`. When the end is omitted, the calldata is sliced up to the last byte.
+
+</details>
+
+---
+
+## 📚 Further Readings
+
+If you want to dive deeper into the world of arrays and data locations in Solidity, there are a variety of resources available for you to explore. Here are a few recommendations to get you started:
+
+- 📜 [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) - - The Ethereum Yellow Paper is a technical document that describes the Ethereum Virtual Machine (EVM) at a low-level. It provides a detailed explanation of how the EVM works, including its architecture, instruction set, and gas metering. If you want to understand the underlying mechanics of data storage and access in Ethereum, this is a great resource to consult.
+
+- 📖 [Solidity Tutorial: All About Calldata by Jean Cvllr](https://betterprogramming.pub/solidity-tutorial-all-about-calldata-aebbe998a5fc) - If you want a more hands-on introduction to calldata in Solidity, this tutorial by Jean Cvllr is a great place to start. It covers the basics of calldata, including how it differs from other data locations like memory and storage, and provides examples of how to work with calldata in Solidity.
+
+- 📚 [Solidity Documentation](https://docs.soliditylang.org/en/v0.8.19/) - The official Solidity documentation is a comprehensive resource that covers all aspects of the Solidity programming language, including arrays and data locations. It includes detailed explanations of Solidity syntax and features, as well as practical examples and best practices for writing Solidity code.
+
+- 🌐 [Ethereum Stack Exchange](https://ethereum.stackexchange.com/) - The Ethereum Stack Exchange is a community-driven Q&A platform where developers can ask and answer questions about Ethereum and smart contract development. It's a great resource for finding solutions to specific problems or getting advice on best practices.
+
+## 🎉 Conclusion
+
+Today, we've explored Arrays and Data Locations in Solidity. We've learned about the different data locations in Solidity, the syntax for declaring and initializing arrays, and how to work with array members and array slices. With this knowledge, you'll be well-equipped to start building complex smart contracts that rely on arrays to store and manipulate data. Happy coding! 💻
