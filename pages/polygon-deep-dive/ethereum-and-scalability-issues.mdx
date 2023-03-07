@@ -1,0 +1,122 @@
+import Image from "next/image";
+import tweet_1 from "assets/polygon-deep-dive/tweet-by-will-papper.png";
+import tweet_2 from "assets/polygon-deep-dive/tweet-by-molly-white.png";
+
+You've probably heard of Ethereum, the cool kid on the blockchain block, but did you know it's been facing some serious scalability issues lately? 😱
+
+With more and more people jumping on the blockchain bandwagon, Ethereum has been struggling to keep up with the demand for transactions. This means high gas fees, slow transaction times, and a whole lot of frustrated users. 😤
+
+## Why Scale Ethereum? 🧐
+
+First off, let's talk about what scalability actually means. Simply put, it's the ability of a blockchain network to handle a large number of transactions. And with the rise of decentralized finance (DeFi) and non-fungible tokens (NFTs), the demand for transactions on Ethereum has skyrocketed. 💸
+
+This surge in demand has led to what we call "network congestion". Basically, there are too many transactions happening on the network, and not enough capacity to handle them all. This leads to slow transaction times and high gas fees. And let's face it, no one wants to pay $20 in gas fees just to buy a $100 NFT. 🤑
+
+But it's not just about convenience and cost. The scalability issue affects the entire ecosystem. As more people get involved in DeFi, the demand for transactions will only continue to increase. If Ethereum can't keep up with this demand, it could lead to a bottleneck that hinders the growth of the entire DeFi space. 😱
+
+The consequences of Ethereum's scalability issues can be significant. Slow transaction times and high fees can deter new users from joining the network, which can limit its growth potential. For dApps and protocols built on top of Ethereum, scalability issues can lead to poor user experiences, which can hurt adoption rates and lead to financial losses for the developers.
+
+To better understand the impact of Ethereum's scalability issues, let's look at some real-world examples.
+
+- 🐱 **CryptoKitties**: In 2017, the viral dApp CryptoKitties overwhelmed the Ethereum network, causing congestion and slowing down transaction times. During the time of Dec 2017 CryptoKitties was busiest address on the ethereum network, accounting for nearly **12%** of all transactions. The popularity of the game led to a surge in Ethereum transaction fees.
+- **Bored Ape Yacht Club (BAYC)** - In 2021, the BAYC NFT project experienced a similar issue. The project's popularity led to a surge in demand for transactions on the Ethereum network, which led to high gas fees and slow transaction times. This led to a lot of frustrated users, which in turn led to a lot of negative press for the project.
+
+  <Image src={tweet_1} width={500} height={500} alt="Tweet by Will Paper" />
+
+- **Otherside** - Bored Ape Yacht Club (BAYC) brand by Yuga Labs launched a brand new NFT project called Otherside. The project offered 100,000 "deeds" for "virtual land" in the form of NFTs. The original Bored Ape NFTs can go for hundreds of thousands of dollars. So, cryptocurrency investors lined up to try and score at least one of the 100,000 NFTs in its latest series.
+
+  The result: An overwhelmed(Opens in a new tab) Ethereum Network that caused fees to skyrocket to astronomically high amounts.
+
+  {" "}
+
+  <Image src={tweet_2} width={500} height={500} alt="Tweet by Will Paper" />
+
+## Scaling Solutions
+
+First, let's talk about how Ethereum scaled to Eth2.0. Ethereum was originally built with a Proof of Work (PoW) consensus algorithm, which meant that miners had to solve complex mathematical problems to validate transactions and earn rewards. However, this method had several drawbacks, including high energy consumption, slow transaction processing times, and high fees.
+
+To address these issues, Ethereum developers worked on transitioning to a Proof of Stake (PoS) consensus algorithm, which will allow for faster transaction processing times, lower fees, and a more energy-efficient network. PoS relies on validators, who are responsible for validating transactions and adding new blocks to the blockchain.
+
+Another key scaling solution being implemented in Ethereum is sharding, which allows the network to process more transactions in parallel by splitting the blockchain into smaller pieces, or "shards". Each shard can process its own set of transactions, reducing the load on the main network and increasing scalability.
+
+While the move to Eth2.0 and sharding has certainly improve Ethereum's scalability, it may not be enough to meet the needs of a rapidly growing user base. That's where different scaling solutions such as channels, sidechains, plasma, and rollups come in.
+
+### Channels
+
+Channels are like secret tunnels that allow two parties to conduct many transactions between themselves, without posting them on the blockchain. They use cryptography to ensure that the summary data generated is truly the result of a valid set of intermediate transactions. To keep things secure, a "multisig" smart contract is used to make sure transactions are signed by the correct parties. 🕵️‍♂️
+
+There are two types of channels - **State channels** and **Payment channels**. Let's dive deeper into each of them
+
+A Payment channel is like a two-way ledger maintained by two users. The ledger's initial balance is the sum of deposits locked into the on-chain contract during the channel opening phase. Payment channel transfers can be performed instantaneously without the involvement of the actual blockchain itself. Updates to the ledger's balance (i.e., the payment channel's state) require the approval of all parties in the channel. A channel update, signed by all channel participants, is considered finalized, much like a transaction on Ethereum. 💸💰
+
+State channels, on the other hand, have a lot in common with Payment channels. Users interact by exchanging cryptographically signed messages (transactions), which the other channel participants must also sign. But the difference is that state channels also hold the user's balances and track the current state of the contract's storage (i.e., values of contract variables). This makes it possible to execute a smart contract off-chain between two users, and updates to the smart contract's internal state require only the approval of the peers who created the channel.
+
+### Sidechains
+
+Sidechains are a popular solution for addressing the scalability issue of Ethereum. They are separate blockchains that run independently and are connected to Ethereum Mainnet through a two-way bridge 🌉
+
+One of the benefits of using a sidechain is that it can have separate block parameters and consensus algorithms, making it efficient in processing transactions 🚀
+
+![Sidechains](assets/polygon-deep-dive/sidechains.jpg)
+
+Some sidechains are even EVM-compatible, which means they can execute contracts developed for the Ethereum Virtual Machine (EVM). This includes smart contracts written in Solidity and other EVM smart contract languages. This makes it easy for Ethereum developers to port their smart contracts to sidechains, and for users to interact with them 🤝
+
+But, using a sidechain does come with trade-offs. Each sidechain is responsible for its security and doesn't inherit Ethereum's security properties. This increases the possibility of malicious behavior which can affect your users or put their funds at risk 😱
+
+### Plasma
+
+Plasma is a framework for improving scalability in public blockchains, such as Ethereum. Essentially, it allows for the creation of "child chains" that extend from a "root chain" (Ethereum Mainnet) and are managed by a smart contract deployed on the parent chain. 🌳🌿
+
+This smart contract acts as a bridge, enabling users to move assets between the root chain and the plasma chain. It's worth noting that Plasma chains benefit from Ethereum Mainnet's security to some extent, unlike sidechains that are solely responsible for their security. 🔒
+
+So, what are the basic components of the Plasma framework? Let's take a look:
+
+- 🔍 **Off-chain computation**: Plasma allows for the processing of transactions off the Mainnet, which frees nodes from having to validate every transaction. Instead, a Plasma chain can use a single "operator" to manage the ordering and execution of transactions. This results in faster processing times and lower costs.
+
+- 🌿 **State commitments**: Although transactions are executed off-chain, they are settled on the main Ethereum execution layer to benefit from Ethereum's security guarantees. To do this, the operator is required to publish "state commitments" on Ethereum periodically. This ensures that the off-chain transactions can be settled on Ethereum without the risk of invalid transactions. Merkle roots are important for informing Ethereum about the state of the off-chain. Merkle roots can be thought of as "save points," with the operator saying, "This is the state of the Plasma chain at x point in time, and this is the Merkle root as proof." The operator is making a "state commitment" by committing to the present state of the plasma chain with a Merkle root.
+
+- 🎭 **Entries and exits**: To take advantage of Plasma, there needs to be a mechanism for moving funds between Mainnet and plasma chains. Plasma uses a master contract running on Ethereum to process user entries and exits. This master contract is responsible for tracking state commitments and punishing dishonest behavior via fraud proofs.
+
+- 🏛 **Dispute arbitration**: Like any blockchain, plasma chains need a mechanism for enforcing the integrity of transactions in case participants act maliciously. Fraud proofs are used to arbitrate disputes concerning the validity of state transitions and penalize bad behavior. These proofs are used as a mechanism through which a Plasma child chain files a complaint to its parent chain or to the root chain.
+
+  For example, if a user tries to spend the same funds twice, a fraud proof is created as evidence that the transaction is invalid. The same process applies in Plasma Cash, where a proof is created to show that tokens have been transferred before a withdrawal request is made.
+
+### Rollups
+
+Rollups are a type of scaling solution that bundle up, or “roll up” a bunch of transactions and execute them off-chain in one single transaction. It's like bundling up all of your errands and getting them done in one fell swoop. 🛍️
+
+There are two types of rollups: optimistic rollups and zero-knowledge rollups.
+
+#### Optimistic Rollups
+
+Optimistic rollups have emerged as a promising approach to scaling Ethereum by moving computation and state storage off-chain. This method involves executing transactions outside of the Ethereum network, while still posting transaction data to Mainnet as calldata.
+
+The concept of optimistic rollups is based on bundling multiple off-chain transactions together in large batches before submitting them to Ethereum. This approach helps to spread fixed costs across multiple transactions in each batch, resulting in reduced fees for end-users. Optimistic rollups also utilize compression techniques to minimize the amount of data posted on the Ethereum network.
+
+Optimistic rollups are dubbed "optimistic" because they assume that off-chain transactions are valid, and hence do not require proofs of validity for transaction batches posted on-chain. This distinguishes optimistic rollups from zero-knowledge rollups that rely on cryptographic proofs of validity for off-chain transactions.
+
+![Optimistic Rollups](assets/polygon-deep-dive/optimistic-rollups.jpg)
+
+Instead, optimistic rollups use a fraud-proving scheme to detect cases where transactions are not calculated correctly. After a rollup batch is submitted on Ethereum, a challenge period ensues, during which anyone can challenge the results of a rollup transaction by computing a fraud proof. This ensures that the rollup protocol remains secure and trustworthy.
+
+If the fraud proof succeeds, the rollup protocol re-executes the transaction(s) and updates the rollup's state accordingly. The other effect of a successful fraud proof is that the sequencer responsible for including the incorrectly executed transaction in a block receives a penalty. This incentivizes sequencers to ensure that transactions are executed correctly.
+
+If the rollup batch remains unchallenged (i.e., all transactions are correctly executed) after the challenge period elapses, it is deemed valid and accepted on Ethereum. Others can continue to build on an unconfirmed rollup block, but with a caveat: transaction results will be reversed if based on an incorrectly executed transaction published previously.
+
+#### Zero-Knowledge Rollups
+
+Well, similar to optimistic rollups, ZK-rollups also bundle transactions into batches that are executed off-chain. This means that the computation required to process each transaction doesn't happen on Ethereum itself, but rather on a separate network. By moving the heavy computation off-chain, the amount of data that needs to be posted to the Ethereum blockchain is reduced, which is great news for users as it can help reduce transaction fees.
+
+However, what sets ZK-rollups apart is the way they prove the validity of their off-chain transactions. Unlike optimistic rollups that rely on a fraud-proving scheme, ZK-rollups use cryptographic proofs to prove that the proposed changes to Ethereum's state are truly the result of executing all the transactions in the batch. This means that ZK-rollups only need to provide validity proofs to finalize transactions on Ethereum, instead of posting all transaction data on-chain like optimistic rollups. Pretty cool, right? 😎
+
+The ZK-rollup's state is maintained by a smart contract deployed on the Ethereum network, and to update this state, ZK-rollup nodes must submit a validity proof for verification. Think of it like a magic trick 🎩, where the validity proof is the secret sauce that makes everything work! Once the validity proof is submitted, the ZK-rollup contract verifies that the state-change proposed by the rollup is really the result of executing the given batch of transactions. If everything checks out, the state is updated accordingly.
+
+![Zero Knowlege Rollups](assets/polygon-deep-dive/zk-rollup.svg)
+
+One of the major benefits of ZK-rollups is the ability to move funds between the ZK-rollup and Ethereum network with no delay. This is because exit transactions are executed once the ZK-rollup contract verifies the validity proof. In contrast, withdrawing funds from optimistic rollups is subject to a delay to allow anyone to challenge the exit transaction with a fraud proof. So if you're looking for speedy transactions, ZK-rollups might be the way to go! 💰💨
+
+Another interesting aspect of ZK-rollups is the way they write transactions to Ethereum as calldata. Calldata is where data that is included in external calls to smart contract functions gets stored. Information in calldata is published on the blockchain, allowing anyone to reconstruct the rollup’s state independently. To help reduce the cost of on-chain data publication, ZK-rollups use compression techniques to reduce transaction data. For example, accounts are represented by an index rather than an address, which saves 28 bytes of data. Every byte counts, right? 🔍💾
+
+---
+
+While all the above scaling solutions have their own benefits and limitations, Polygon has emerged as a popular scaling solution that combines the advantages of sidechains, Plasma, and rollups. Polygon is a Layer 2 scaling solution that offers fast and cheap transactions, cross-chain interoperability, and smart contract support.

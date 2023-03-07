@@ -1,3 +1,19 @@
 {
-  "index": "Coming soon..."
+  "-- SEP-1": {
+    "type": "separator",
+    "title": "Introduction"
+  },
+  "index": "The Blockchain Trilemma",
+  "-- SEP-2": {
+    "type": "separator",
+    "title": "Addressing the Problem"
+  },
+  "ethereum-and-scalability-issues": "Ethereum and its Scalability Issues",
+  "-- SEP-3": {
+    "type": "separator",
+    "title": "💜 Polygon"
+  },
+  "getting-started-with-polygon": "Enter Polygon",
+  "polygon-pos": "Polygon PoS",
+  "ecosystem-for-developers": "Ecosystem for Developers"
 }

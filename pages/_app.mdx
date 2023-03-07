@@ -1,7 +1,11 @@
+import { GoogleAnalytics } from "nextjs-google-analytics";
 import "../styles/index.css";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-
-
+  return (
+    <>
+      <Component {...pageProps} />
+      <GoogleAnalytics trackPageViews strategy="beforeInteractive" />
+    </>
+  );
 }
