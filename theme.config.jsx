@@ -74,6 +74,18 @@ const config = {
       };
     }
   },
+  banner: {
+    key: "polygon-deep-dive-release",
+    text: (
+      <a
+        href="https://guides.vedantc.dev/polygon-deep-dive"
+        target="_blank"
+        rel="noreferrer"
+      >
+        💜 Polygon Deep Dive is Released Read Now →
+      </a>
+    ),
+  },
   head: function useHead() {
     const { title } = useConfig();
     const { route } = useRouter();

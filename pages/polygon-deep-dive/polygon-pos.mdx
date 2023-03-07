@@ -1,0 +1,63 @@
+## What is Polygon PoS
+
+Polygon PoS is a protocol developed by Polygon to address the limitations of the Ethereum network. It is a layer 2 scaling solution that uses a Proof-of-Stake (`PoS`) consensus mechanism to validate transactions and secure the network.
+
+In a Proof-of-Stake system, validators are chosen based on the number of tokens they hold or have staked on the network, as opposed to Proof-of-Work systems where validators are chosen based on their computing power. This makes PoS networks more energy-efficient and less costly to maintain than PoW networks.
+
+Polygon PoS allows for faster and cheaper transactions by processing them off-chain and settling them on the Ethereum mainnet periodically.
+
+By using Polygon PoS, developers can build decentralized applications (dApps) that can handle millions of users and transactions without being limited by the scalability issues of the Ethereum network. This has led to the creation of a thriving ecosystem of dApps that offer a wide range of services, from decentralized finance (DeFi) to gaming and NFT marketplaces.
+
+One of the key benefits of using Polygon PoS is the low gas fees. Gas fees on the Ethereum network have been a major barrier to adoption for many users and dApps, as they can be prohibitively expensive, especially during periods of high network congestion. By processing transactions off-chain and settling them periodically on the Ethereum mainnet, Polygon PoS can significantly reduce gas fees, making it more accessible to a wider audience. Let's take a look at how Polygon PoS works.
+
+## Architecture
+
+Polygon PoS has a unique three-layered architecture that enables it to offer superior functionality and efficiency.
+
+The Polygon PoS architecture comprises the `Ethereum layer`, `Heimdall layer`, and `Bor layer`.
+
+The Ethereum layer is made up of a collection of smart contracts running on the Ethereum blockchain. It acts as the foundation layer and provides the necessary security and reliability required for a blockchain network.
+
+The Heimdall layer, on the other hand, consists of a collection of Proof of Stake (PoS) Heimdall nodes that operate in parallel to the Ethereum main network. These nodes monitor the staking contracts on the Ethereum layer, ensuring the network remains secure and decentralized.
+
+The final layer in the Polygon PoS architecture is the Bor layer, which comprises a collection of Bor nodes responsible for processing transactions on the network. The Bor layer is built on Go Ethereum, while the Heimdall layer is based on the Tendermint protocol.
+
+![Polygon PoS Architecture](assets/polygon-deep-dive/architecture-pos.png)
+
+Let's look at each of them in detail
+
+### Ethereum Layer
+
+The Ethereum layer is a crucial part of the Polygon architecture, responsible for activating the Proof of Stake (PoS) mechanism. It consists of a set of smart contracts deployed on the Ethereum blockchain that enable various functions driving the Polygon Network.
+
+One of the essential functions of the Ethereum layer is managing staking contracts. These contracts allow users to stake their MATIC tokens for validation of state transitions on Polygon and earn staking rewards. Anyone can join as a validator by staking MATIC tokens in the Ethereum main blockchain. The staking contracts also enable the imposition of penalties and slashes for malicious activities such as double signing or validator downtime.
+
+Another critical function of the staking contracts is saving Polygon Network checkpoints on the Ethereum blockchain. This feature ensures that the Polygon Network remains secure and reliable. If any issues arise on the Polygon Network, the checkpoints on the Ethereum blockchain can be used to restore the network to its previous state.
+
+The PoS mechanism is another essential aspect of the Polygon blockchain architecture. It works to resolve data unavailability issues in Polygon side chains, ensuring that millions of users and DApps can interact with the Polygon Network efficiently and securely. The PoS mechanism enables the validation of transactions and blocks on the Polygon Network by a set of validators, ensuring that the network remains secure and reliable.
+
+### Heimdall layer
+
+he Heimdall layer is a crucial component in the three-layer architecture of Polygon Network, and it plays an important role in managing validators and block producers, state-sync mechanism, and other essential aspects of the system. In this section, we will discuss the important highlights of the Heimdall layer, including encoder, transactions, StdTx, types, validators, checkpoints, validator key management, and ante handler.
+
+![Architecture Plasma](assets/polygon-deep-dive/architecture.webp)
+
+- **Encoder** - Encoder or Pulp is a critical component of the Heimdall layer, which is responsible for verifying transactions on the Ethereum blockchain. It uses RLP encoding for creating special transactions such as checkpoints. Transactions in the Heimdall layer include metadata and context responsible for initiating state changes in a module. Users can create transactions when they want to interact with a specific application or introduce any state changes.
+- **StdTx** - StdTx is another significant component in the Heimdall layer, which allows users to create their own blockchain applications on the Polygon network without requiring fees for every transaction. This feature makes Polygon an attractive platform for developers to create decentralized applications.
+- **Types** - Types are an integral highlight of Polygon's architecture, and the Heimdall layer has three types: PubKey, HeimdallAddress, and HeimdallHash. HeimdallAddress refers to an address on the Heimdall layer with a length of 20 bytes and uses the common library of Ethereum for defining the Address. PubKey refers to the public key employed in Heimdall, which is uncompressed and compatible with ECDSA. The final type, HeimdallHash, offers representation for the hash in the Heimdall layer and leverages the hash of Ethereum.
+- **Validators** - Validators are an essential part of Polygon architecture, and they are responsible for a larger share of work on the Heimdall layer. The Heimdall layer could change validators once a block is completed with the EndBlocker. The Heimdall layer provides the description of the checkpoint numbers in between which the validator will be active.
+- **Checkpoints** - Checkpoints offer representation for the snapshots of Bor chain state and play a crucial role in Polygon's architecture. They must be verified by over two-thirds of the validator set before submitting the checkpoint on the staking management contracts on the Ethereum main blockchain.
+- **Validator key management** - It is another essential aspect of the Heimdall layer, and validators can utilize two keys for managing all validator activities on the Polygon Network: the signer key and the owner key. The signer key is the address used for signing the Heimdall blocks and checkpoints, and the private key stays on the validator node for better signing. On the other hand, the owner key is responsible for managing stakes, rewards, or operations associated with delegations.
+- **Ante Handler** - It is the final component in the Heimdall layer of Polygon blockchain architecture, and it works on checking and validating transactions. Following the verification, you can check the sender's balance and deduct the necessary fees for including successful transactions. The Ante Handler component also works on the management and verification of signatures in any incoming transaction.
+
+### Bor Layer
+
+The Bor layer is also referred to as the Block Producer implementation. It is a side chain operator with Ethereum Virtual Machine (EVM) compatibility. The Bor node is a fundamental Geth implementation with custom changes in the consensus algorithm, which helps maintain its lightweight resource. Block producers are sorted from the Validator set alongside shuffling by leveraging older Ethereum block hashes.
+
+The Bor layer maintains synchronization with Heimdall for selecting producers and verifiers. All the interactions for Polygon users happen through the Bor layer. The Bor layer also features EVM compatibility, thereby offering the flexibility for accessing Ethereum developer applications and tools. Block producers on the Bor layer are a committee assembled from the pool of Validators according to their stakes. The periodic selection and shuffling of block producers are also significant highlights of the Bor layer.
+
+The Genesis contracts are the most prominent highlight in the functionalities of the Bor layer. Bor layer relies largely on the three in-built contracts available on the genesis block. The Genesis contracts include the Bor validator set, MATIC ERC20 token contract, and state receiver contract.
+
+Span management is the next important aspect in the Bor layer of Polygon. Span refers to the logically defined block set for which you can choose a specific set of validators from available validators. Span management allows validators to choose which spans they will participate in, thereby increasing the efficiency of the network.
+
+In the case of normal transactions, Bor layer collects fees in the form of MATIC tokens and distributes them among block producers. MATIC serves as the primary token for paying gas fees for Polygon transactions as well as staking purposes. The fee model is a supporting factor for the efficiency of Bor layer, which has an exceptional transaction speed of almost 2 to 4 seconds.
