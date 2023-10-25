@@ -15,7 +15,7 @@
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "framer-motion": "^10.0.1",
-    "next": "13.1.6",
+    "next": "13.5.0",
     "nextjs-google-analytics": "^2.3.3",
     "nextra": "^2.2.15",
     "nextra-theme-docs": "^2.2.15",
